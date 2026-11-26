@@ -542,3 +542,9 @@
   if(!reducedMotion.matches)document.documentElement.classList.add('motion-ready');
   syncScroll();showRoute();
 })();
+
+(function(){const r=document.getElementById('hero-slider');if(!r)return;const s=[...r.querySelectorAll('.hs-slide')],d=r.querySelector('.hs-dots');let i=0,t;
+s.forEach((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-label',`${k+1}번째 화보`);b.onclick=()=>{go(k);start()};d.appendChild(b)});
+function go(k){s[i].classList.remove('is-active');i=k;s[i].classList.add('is-active');[...d.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i))}
+function start(){clearInterval(t);if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;t=setInterval(()=>go((i+1)%s.length),5500)}
+go(0);start();})();
