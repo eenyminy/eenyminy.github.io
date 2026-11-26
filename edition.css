@@ -801,3 +801,9 @@ html,body{overflow-x:clip}
 .sub-head .k{font:10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#8a8c90}
 .sub-head b{font:600 16px Pretendard;color:#141f3c}
 .sub-head .chap-more{margin-left:auto}
+/* season graphics: big editorial cards (like first draft) */
+#ch-season .chap-row{display:grid!important;grid-template-columns:1fr 1fr!important;gap:clamp(18px,2.2vw,32px)!important;overflow:visible!important;margin:0!important;padding:0!important}
+#ch-season .chap-card,#ch-season .chap-card.big{grid-column:auto!important;grid-row:auto!important;flex:none!important}
+#ch-season .cc-im{aspect-ratio:4/5!important;flex:none!important;border-radius:8px}
+#ch-season .cc-tx b{font-size:clamp(20px,2vw,28px)}
+@media (max-width:760px){#ch-season .chap-row{grid-template-columns:1fr!important;gap:34px!important}}
