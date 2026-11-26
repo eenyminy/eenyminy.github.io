@@ -602,3 +602,18 @@ backdrop-filter:blur(22px) saturate(2) brightness(.85)!important;-webkit-backdro
 body.hero-light .hs-arrow{color:#141f3c;border-color:rgba(20,31,60,.2)}
 .hs-dots{z-index:5}
 @media (max-width:760px),(hover:none){.hs-arrow{display:none}}
+/* iOS-style affordance on mobile */
+@media (max-width:760px){
+.hero-slider{background:transparent;padding:8px 0 0}
+.hs-track{gap:10px}
+.hs-slide{flex:0 0 86%!important;border-radius:22px;transform:scale(.94);transition:transform .6s cubic-bezier(.22,.8,.18,1);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.hs-slide.is-active{transform:none}
+.hs-track.dragging .hs-slide{transition:none}
+.hs-dots{bottom:16px}
+.hs-dots button{background:rgba(255,255,255,.45)}
+/* AI casting: native swipe strip */
+.casting-mosaic.balanced{display:flex!important;grid-template-columns:none!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:10px;padding:0 20px 6px;margin:0 -20px;scroll-padding:0 20px;scrollbar-width:none;overscroll-behavior-x:contain}
+.casting-mosaic.balanced::-webkit-scrollbar{display:none}
+.casting-mosaic.balanced>*{flex:0 0 42%;scroll-snap-align:start;aspect-ratio:3/4;grid-column:auto!important;grid-row:auto!important;border-radius:14px;overflow:hidden}
+.casting-mosaic.balanced>.cast-directory{flex-basis:34%}
+}
