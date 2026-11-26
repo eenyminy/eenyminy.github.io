@@ -251,7 +251,7 @@
     html+=caseNav([['hotel','Hotel lookbook'],['diary','Hotel diary'],['collection','Collection']]);
     html+=`<section class="case-section hotel-opening" id="case-hotel"><img class="hotel-signature" src="img/ed/oh-script.png" alt="Ordinary Holiday 원본 레터링">${still(8,'','hotel-small')}${still(71,'','hotel-large')}<span class="hotel-season">2025 SS</span></section>`;
     html+=`<section class="case-section hotel-lace-spread">${still(3,'','hotel-campaign')}<div class="hotel-lace">${asset('ed/oh-lace.png','Von Dutch 원본 레이스 그래픽')}<p>Ordinary Holiday<br>× Von Dutch</p></div></section>`;
-    html+=`<section class="case-section">${storySpread([4,'oh/vd_lb_halter.jpg'],[],'pair')}${storySpread([6],[],'quiet')}${storySpread([54,'oh/vd_lb_pants.jpg'],[],'offset')}</section>`;
+    html+=`<section class="case-section">${storySpread(['oh/vd_lb_halter.jpg'],['홀터 셋업 · 9컷'],'wide')}${storySpread([4],[],'quiet')}${storySpread([6],[],'quiet')}${storySpread([54,'oh/vd_lb_pants.jpg'],[],'offset')}</section>`;
     html+=`<section class="case-section" id="case-diary">${storyHeading('Hotel diary.','2025 SS · 룩북')}${storySpread(['oh/vd25_tube.jpg','oh/vd25_tank.jpg'],['협업 로고 튜브탑 세트','워시드 프린트 탱크 · 레터링 스커트'],'pair')}${storySpread(['oh/vd25_cap_trio.jpg'],['협업 로고 트러커 캡'],'wide')}${storySpread(['oh/vd25_crack_tee.jpg','oh/vd25_lace.jpg'],['크랙 프린트 베이비 티','레이스 트림 베이비 티'],'offset')}${storySpread(['oh/vd25_pants_trio.jpg'],['백포켓 Von Dutch 자수 팬츠'],'wide')}${storySpread(['oh/vd25_beige_pants.jpg'],['백포켓 자수 카고 팬츠 · 베이지'],'quiet')}${storySpread(['oh/vd25_bed_trio.jpg'],['스톤 워싱 그래픽 티'],'wide')}</section>`;
     html+=`<section class="case-section story-collection" id="case-collection">${storyHeading('The collection.','2025 SS')}`;
     for(const [i,s] of p.secs.slice(1).entries()){
@@ -268,9 +268,9 @@
   function magazineNat(){
     const p=projects.find(p=>p.id==='nat');
     let html=magazineHeader(p,'N.A.T','theme-nat','Brand assets · 2027 SS');
-    html+=caseNav([['assets','Brand assets'],['identity','Brandbook'],['system','Labels'],['brief','Brief'],['guide','Guide'],['product','Collection'],['graphics','Graphics']]);
-    html+=natAssetsBoard();
+    html+=caseNav([['identity','Brandbook'],['system','Labels'],['assets','Brand assets'],['brief','Brief'],['guide','Guide'],['product','Collection'],['graphics','Graphics']]);
     html+=natBookPanels();
+    html+=natAssetsBoard();
     html+=`<section class="case-section nat-detail-story">${storySpread(['nat/label_neck_m.jpg','nat/tag_metal_m.jpg'],['넥라벨 적용','금속 태그 시안'],'offset')}<a class="text-link" href="nat.html">N.A.T 브랜드북 전체 보기 ＋</a></section>`;
     if(data.natRef)html+=`<section class="case-section" id="case-brief">${storyHeading('From brief to output.','받은 무드 → 직접 그린 그래픽 → 규격 가이드')}<p class="nat-ref-note"><strong>참고 자료 · 본인 작업물이 아닙니다.</strong> 아래는 실장님께 받은 27SS 그래픽 무드보드입니다. 이 무드를 바탕으로 직접 레퍼런스를 찾아, 실제 상품으로 구현했을 때 더 좋을 방향으로 교체하거나 새로 개발한 그래픽을 바로 그려 컨펌받았습니다. 사진의 저작권은 각 출처에 있습니다.</p><h3 class="nat-ref-h">27SS 그래픽 무드보드 · 받은 자료</h3>${naturalGallery(data.natRef.mood,[],'three',6,'natmood')}<p class="nat-ref-arrow">↓ 직접 만든 그래픽 규격 및 사용 가이드</p></section>`;
     if(data.natGuide)html+=`<section class="case-section" id="case-guide">${storyHeading('Usage guide.','직접 제작 · 그래픽 규격 및 사용 가이드 · 15p')}${naturalGallery(data.natGuide.refs,data.natGuide.caps,'three',6,'natguide')}</section>`;
@@ -426,7 +426,7 @@
     let html=caseHeader('eenyminy / 최혜정','어떤 것을<br><em>고를까요?</em>','디자이너 최혜정의 시선과 선택을 담은 포트폴리오 브랜드.','포트폴리오 기획·디자인·AI 활용 제작','—','',{season:'—',role:'기획·비주얼 디자인·AI 활용 제작',contribution:'프로젝트 분류, 화면 구성, 코드 수정과 검토를 AI와 함께 진행',technique:'HTML · CSS · JavaScript · AI 활용',concept:'브랜드·제품·AI 작업을 하나의 포트폴리오로 연결.'}).replace('<dt>ROLE</dt>','<dt>DESIGNER</dt>').replace('<dt>PERIOD</dt>','<dt>BRAND</dt>');
     html+=caseNav([['name','이름과 로고'],['designer','디자이너 최혜정'],['system','AI 제작 과정'],['fields','작업 분야']]);
     html+=`<section class="case-section" id="case-name"><div class="brand-intro-logo"><img src="brand/eenyminy.svg" alt="eenyminy 소문자 워드마크"></div>${sectionHead('NAME / IDENTITY','어느 것을 고를까요?','eenyminy는 무언가를 고르는 놀이에서 시작한 이름입니다. 서로 다른 작업을 하나씩 살펴보며, 그 안에 담긴 디자이너의 시선과 선택을 발견하는 공간을 만들고자 했습니다.')}<div class="brand-story-copy"><p>하나의 분야에 머무르기보다, 작업에 필요한 표현을 선택하고 연결합니다. 텍스타일의 패턴, 의류의 그래픽, 브랜드의 시각 언어, AI로 구성한 장면까지. 이곳의 다양한 작업은 최혜정이라는 한 사람의 시선으로 이어집니다.</p><p>소문자로 이어지는 부드러운 형태는 이름의 친근한 리듬을 담습니다. 선명한 글자 주변의 은은한 빛은, 정돈된 구조 안에서도 표현의 가능성을 열어두려는 이 사이트의 분위기와 연결됩니다.</p></div></section>`;
-    html+=`<section class="case-section" id="case-designer"><img class="designer-photo" src="img/profile_bw.jpg" alt="최혜정 프로필 사진" width="354" height="454">${sectionHead('ABOUT / DESIGNER','GRAPHIC & BX DESIGNER<br>최혜정입니다.','텍스타일에서 시작해 패션 그래픽, 브랜드의 시각 언어와 AI 비주얼까지 작업의 범위를 넓혀왔습니다. 브랜드의 성격을 읽고, 상품과 사용자가 만나는 장면에 맞는 표현을 만드는 일을 합니다.')}<div class="brand-about"><div><p>이 포트폴리오에서는 결과물과 함께 담당한 역할, 상품 적용, 소재와 디테일을 볼 수 있습니다. 사이트의 구성 역시 어떤 작업을 어디서 볼 수 있는지 쉽게 이해하도록 설계했습니다.</p><div class="designer-contact"><a class="dc-btn" href="mailto:h8545587@naver.com"><span>EMAIL</span>h8545587@naver.com</a><a class="dc-btn" href="tel:01036000489"><span>PHONE</span>010-3600-0489</a></div></div><div class="career-list"><div><span>2024.03 – 현재</span><b>원더플레이스</b><small>패션 그래픽</small></div><div><span>2022.12 – 2024.02</span><b>Texworld</b><small>텍스타일 프리랜서</small></div><div><span>2018.07–2020.02</span><b>이랜드월드 패션연구소</b><small>텍스타일 디자인</small></div><div><span>2013.07–2017.12</span><b>Silk Navi</b><small>텍스타일 디자인</small></div></div></div></section>`;
+    html+=`<section class="case-section" id="case-designer"><img class="designer-photo" src="img/profile_bw.jpg" alt="최혜정 프로필 사진" width="354" height="454">${sectionHead('ABOUT / DESIGNER','GRAPHIC & BX DESIGNER<br>최혜정입니다.','텍스타일에서 시작해 패션 그래픽, 브랜드의 시각 언어와 AI 비주얼까지 작업의 범위를 넓혀왔습니다. 브랜드의 성격을 읽고, 상품과 사용자가 만나는 장면에 맞는 표현을 만드는 일을 합니다.')}<div class="brand-about"><div><p>이 포트폴리오에서는 결과물과 함께 담당한 역할, 상품 적용, 소재와 디테일을 볼 수 있습니다. 사이트의 구성 역시 어떤 작업을 어디서 볼 수 있는지 쉽게 이해하도록 설계했습니다.</p><div class="designer-contact"><a class="dc-btn" href="mailto:h8545587@naver.com"><span>EMAIL</span>h8545587@naver.com</a><a class="dc-btn" href="tel:01036000489"><span>PHONE</span>010-3600-0489</a><a class="dc-btn dc-pdf" href="choi-hyejeong-portfolio.pdf" download><span>PDF</span>포트폴리오 받기 ↓</a></div></div><div class="career-list"><div><span>2024.03 – 현재</span><b>원더플레이스</b><small>패션 그래픽</small></div><div><span>2022.12 – 2024.02</span><b>Texworld</b><small>텍스타일 프리랜서</small></div><div><span>2018.07–2020.02</span><b>이랜드월드 패션연구소</b><small>텍스타일 디자인</small></div><div><span>2013.07–2017.12</span><b>Silk Navi</b><small>텍스타일 디자인</small></div></div></div></section>`;
     html+=`<section class="case-section" id="case-system">${sectionHead('AI / WEBSITE WORKFLOW','포트폴리오 사이트','AI와 함께 기획하고 제작한 현재의 사이트입니다.')}${systemFlow('site')}<p class="system-scope">프로젝트 검색·필터, 롤링 상세와 모델북을 연결했습니다.</p></section>`;
     html+=`<section class="case-section" id="case-fields">${sectionHead('EXPLORE / WORK','무엇을 볼까요?','관심 있는 분야를 고르면 해당 작업 모음으로 이어집니다.')}<nav class="brand-fields field-cards" aria-label="소개 페이지에서 작업 분야 선택"><a href="#all-work" data-filter-jump="touchpoint"><span class="fc-img"><img src="img/ed/ee-poster-1.webp" alt="" loading="lazy"></span><span class="fc-body"><strong>브랜드 제작물</strong><span>매장 · 인비테이션 · 디지털 · 협업</span><small>${projects.filter(p=>p.customerTouchpoint).length}개 프로젝트 ＋</small></span></a><a href="#all-work" data-filter-jump="design"><span class="fc-img"><img src="img/oh/hd/fw_ohfw_lb_cross.jpg" alt="" loading="lazy"></span><span class="fc-body"><strong>브랜드·상품 그래픽</strong><span>브랜드 시스템 · 의류 그래픽</span><small>${projects.filter(p=>['brand','graphic'].includes(p.category)).length}개 프로젝트 ＋</small></span></a><a href="#all-work" data-filter-jump="textile"><span class="fc-img"><img src="img/textile-a3/silknavi/silknavi_a3_02.jpg" alt="" loading="lazy"></span><span class="fc-body"><strong>텍스타일</strong><span>패턴 · 컬러웨이 · 상품 적용</span><small>${projects.filter(p=>p.category==='textile').length}개 프로젝트 ＋</small></span></a><a href="#project/ai"><span class="fc-img"><img src="img/lk/tommy/02.jpg" alt="" loading="lazy"></span><span class="fc-body"><strong>AI 비주얼</strong><span>인물 · 스타일링 · 장면 구성</span><small>14명 모델북 ＋</small></span></a><a href="#all-work" data-filter-jump="data"><span class="fc-img"><img src="img/db/a01.jpg" alt="" loading="lazy"></span><span class="fc-body"><strong>기획·데이터</strong><span>시장 리서치 · 기획 대시보드</span><small>${projects.filter(p=>p.category==='data').length}개 프로젝트 ＋</small></span></a></nav></section>`;
     return html+`<footer class="case-footer"><button type="button" class="case-list-back" data-close-case>돌아가기</button><a class="text-link" href="#all-work" data-filter-jump="all">전체 프로젝트 보기 <span aria-hidden="true">＋</span></a></footer></div></div>`;
@@ -577,12 +577,45 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});})();
   const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   if(reduce||!('IntersectionObserver'in window))return;
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.18,rootMargin:'0px 0px -6% 0px'});
-  document.querySelectorAll('.sel-main,.sel-sub,.arc-img').forEach(el=>{el.classList.add('rv-img');io.observe(el)});
-  document.querySelectorAll('main h2[id]:not(#index-title), .sel-copy h3').forEach(h=>{
+  document.querySelectorAll('main h2[id]:not(#index-title)').forEach(h=>{
     const parts=h.innerHTML.split(/<br\s*\/?>/i);
     h.innerHTML=parts.map(p=>`<span class="rv-line"><span>${p}</span></span>`).join('');
     h.classList.add('rv-h');
     if(!h.closest('.sel-main'))io.observe(h);
   });
-  document.querySelectorAll('.sel-main').forEach(m=>{const h=m.querySelector('.rv-h');if(!h)return;new MutationObserver(()=>{if(m.classList.contains('in'))h.classList.add('in')}).observe(m,{attributes:true,attributeFilter:['class']})});
+})();
+
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver'in window))return;
+  const SEL='.nat-book-panel .nat-book-symbol,.nat-book-signature,.nat-book-lockup>p,.nat-book-panel .book-caption,.nat-time-meta,.nat-label-board .nlb,.nat-detail-story figure,.nat-detail-story img';
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+  const scan=()=>document.querySelectorAll(SEL).forEach((el,i)=>{if(el.dataset.fu)return;el.dataset.fu=1;el.classList.add('fu');if(el.classList.contains('nlb'))el.style.setProperty('--d',(([...el.parentNode.children].indexOf(el))%3)*.12+'s');io.observe(el)});
+  new MutationObserver(()=>requestAnimationFrame(scan)).observe(document.body,{childList:true,subtree:true});scan();
+})();
+
+(function(){
+  const bar=document.getElementById('chap-tabs');if(!bar)return;
+  const sc=bar.querySelector('.ct-scroll'),pill=bar.querySelector('.ct-pill'),tabs=[...sc.querySelectorAll('a')];
+  const map={};tabs.forEach(a=>map[a.dataset.t]=a);
+  let cur=null;
+  function set(k){if(k===cur)return;cur=k;tabs.forEach(a=>a.classList.toggle('on',a.dataset.t===k));const a=map[k];if(!a){pill.style.opacity=0;return}
+    pill.style.opacity=1;pill.style.width=a.offsetWidth+'px';pill.style.transform=`translateX(${a.offsetLeft}px)`;
+    if(sc.scrollWidth>sc.clientWidth)sc.scrollTo({left:a.offsetLeft-(sc.clientWidth-a.offsetWidth)/2,behavior:'smooth'});}
+  const secs=[...document.querySelectorAll('[data-ch]')];
+  function upd(){const y=innerHeight*.35;let k=null;for(const s of secs){const r=s.getBoundingClientRect();if(r.top<=y)k=s.dataset.ch}
+    const last=secs[secs.length-1];if(last&&last.getBoundingClientRect().bottom<0)k=null;set(k)}
+  addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});addEventListener('resize',()=>{const k=cur;cur=null;set(k)});upd();
+  tabs.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){const top=el.getBoundingClientRect().top+scrollY-bar.offsetHeight-8;scrollTo({top,behavior:'smooth'})}}));
+  bar.querySelector('.ct-logo')?.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
+  // labels
+  const tr=document.querySelector('.lb-track'),lbl=document.querySelector('.lb-brand');
+  if(tr){const cards=[...tr.querySelectorAll('.lb-card')];
+    const tilt=()=>{const c=tr.getBoundingClientRect(),mid=c.left+c.width/2;let best=null,bd=1e9;
+      cards.forEach(cd=>{const r=cd.getBoundingClientRect(),o=(r.left+r.width/2-mid)/c.width;const d=Math.abs(o);if(d<bd){bd=d;best=cd}
+        cd.style.transform=matchMedia('(prefers-reduced-motion:reduce)').matches?'':`rotateY(${Math.max(-1,Math.min(1,o))*-14}deg) scale(${1-Math.min(d,1)*.08})`});
+      if(best&&lbl&&lbl.textContent!==best.dataset.brand){lbl.style.opacity=0;setTimeout(()=>{lbl.textContent=best.dataset.brand;lbl.style.opacity=1},150)}};
+    tr.addEventListener('scroll',()=>requestAnimationFrame(tilt),{passive:true});addEventListener('resize',tilt);tilt();
+    let down=null;tr.addEventListener('pointerdown',e=>{down=[e.clientX,e.clientY]});
+    tr.addEventListener('click',e=>{const cd=e.target.closest('.lb-card');if(!cd||!cd.classList.contains('has-back'))return;if(down&&Math.hypot(e.clientX-down[0],e.clientY-down[1])>8)return;cd.classList.toggle('flip')});
+  }
 })();
