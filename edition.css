@@ -552,3 +552,14 @@ body:not(.on-hero) .glass-menu a:hover{background:linear-gradient(110deg,rgba(32
 .sel-sub::before{content:"";position:absolute;inset:0 0 70%;background:linear-gradient(rgba(0,0,0,.38),transparent);z-index:1;pointer-events:none}
 .sel-sub span{z-index:2}
 .sel-sub.label-tile::before{display:none}
+/* scrolled: navy glass with sheen */
+body:not(.on-hero) .glass-pill,body:not(.on-hero) button.glass-pill,body:not(.on-hero) .glass-menu a{
+background:linear-gradient(180deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,.06) 46%,rgba(255,255,255,0) 54%,rgba(120,140,255,.10) 100%),linear-gradient(115deg,rgba(20,32,72,.80) 0%,rgba(34,40,92,.72) 55%,rgba(58,46,104,.70) 100%)!important;
+border:1px solid rgba(255,255,255,.34)!important;
+box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12),inset 0 0 18px rgba(140,160,255,.12),0 10px 26px rgba(10,15,40,.28)!important;
+backdrop-filter:blur(18px) saturate(1.8)!important;-webkit-backdrop-filter:blur(18px) saturate(1.8)!important}
+body:not(.on-hero) .glass-menu a:hover{background:linear-gradient(180deg,rgba(255,255,255,.36) 0%,rgba(255,255,255,.1) 46%,rgba(255,255,255,0) 54%),linear-gradient(115deg,rgba(32,48,98,.84),rgba(66,56,120,.76))!important}
+/* glowing white logo */
+.glass-logo img{filter:brightness(0) invert(1) drop-shadow(0 0 4px rgba(255,255,255,.85)) drop-shadow(0 0 12px rgba(190,205,255,.6)) drop-shadow(0 0 24px rgba(160,140,255,.35));transition:filter .6s}
+body.on-hero.hero-light .glass-logo img{filter:brightness(0) invert(1) drop-shadow(0 0 3px rgba(255,255,255,.7)) drop-shadow(0 0 10px rgba(255,255,255,.35))}
+.glass-logo:hover img{filter:brightness(0) invert(1) drop-shadow(0 0 6px #fff) drop-shadow(0 0 16px rgba(190,205,255,.8)) drop-shadow(0 0 32px rgba(160,140,255,.5))}

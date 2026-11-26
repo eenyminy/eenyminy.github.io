@@ -271,7 +271,7 @@
     html+=caseNav([['assets','Brand assets'],['identity','Brandbook'],['system','Labels'],['brief','Brief'],['guide','Guide'],['product','Collection'],['graphics','Graphics']]);
     html+=natAssetsBoard();
     html+=natBookPanels();
-    html+=`<section class="case-section nat-detail-story">${storySpread(['nat/label_point.jpg','nat/label_neck_m.jpg'],['포인트 라벨','넥라벨 적용'],'offset')}${storySpread(['nat/tag_metal_m.jpg','nat/story.png'],['금속 태그 시안','Story symbol'],'pair')}<a class="text-link" href="nat.html">N.A.T 브랜드북 전체 보기 ＋</a></section>`;
+    html+=`<section class="case-section nat-detail-story">${storySpread(['nat/label_neck_m.jpg','nat/tag_metal_m.jpg'],['넥라벨 적용','금속 태그 시안'],'offset')}<a class="text-link" href="nat.html">N.A.T 브랜드북 전체 보기 ＋</a></section>`;
     if(data.natRef)html+=`<section class="case-section" id="case-brief">${storyHeading('From brief to output.','받은 무드 → 직접 그린 그래픽 → 규격 가이드')}<p class="nat-ref-note"><strong>참고 자료 · 본인 작업물이 아닙니다.</strong> 아래는 실장님께 받은 27SS 그래픽 무드보드입니다. 이 무드를 바탕으로 직접 레퍼런스를 찾아, 실제 상품으로 구현했을 때 더 좋을 방향으로 교체하거나 새로 개발한 그래픽을 바로 그려 컨펌받았습니다. 사진의 저작권은 각 출처에 있습니다.</p><h3 class="nat-ref-h">27SS 그래픽 무드보드 · 받은 자료</h3>${naturalGallery(data.natRef.mood,[],'three',6,'natmood')}<p class="nat-ref-arrow">↓ 직접 만든 그래픽 규격 및 사용 가이드</p></section>`;
     if(data.natGuide)html+=`<section class="case-section" id="case-guide">${storyHeading('Usage guide.','직접 제작 · 그래픽 규격 및 사용 가이드 · 15p')}${naturalGallery(data.natGuide.refs,data.natGuide.caps,'three',6,'natguide')}</section>`;
     html+=`<section class="case-section" id="case-product">${storyHeading('The collection.','2027 SS · 상품 개발 시안')}<p class="nat-origin-note">상품마다 제안 출처를 표기했습니다. <b>본인 제안</b>은 직접 레퍼런스를 찾아 그래픽을 개발한 상품, <b>실장님 레퍼런스 기반 제안</b>은 받은 레퍼런스를 바탕으로 그래픽을 개발한 상품입니다.</p>`;
