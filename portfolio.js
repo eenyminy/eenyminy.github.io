@@ -285,6 +285,7 @@
     html+=p.productStories.filter(x=>selected.includes(x.tile)).map(productBlock).join('');
     const archive=p.productStories.filter(x=>x.group!=='women'&&![21,18,28,...selected].includes(x.tile));
     html+=`<details class="artwork-details"><summary>컬렉션 더 보기</summary><div class="nat-archive-products">${archive.map(productBlock).join('')}</div></details></section>`;
+    if(data.natRefWork)html+=`<section class="case-section" id="case-refwork">${storyHeading('Proposed from references.','실장님 레퍼런스 기반 제안 · 그래픽 작업지시서')}${naturalGallery(data.natRefWork.refs,data.natRefWork.caps,'three')}</section>`;
     html+=`<section class="case-section" id="case-graphics">${storyHeading('Original graphics.')}${storySpread(['nat/sig_crack.jpg','nat/sym_var.jpg'],[],'pair')}<details class="artwork-details"><summary>시즌 그래픽 보기</summary>${naturalGallery(p.imgs.filter(r=>typeof r==='string'&&r.startsWith('nat/e/')),[],'three',12,'nat-graphics')}</details></section>`;
     html+=`<section class="case-section" id="case-material"><details class="artwork-details"><summary>소재·제작 가이드</summary><div class="nat-wear-story">${storySpread(['ed/nat-wear-1.webp','ed/nat-wear-9.webp'],['AI 착장 시안','AI 착장 시안'],'offset')}</div>${naturalGallery(['nat/c/ai_cat.jpg','nat/c/size.jpg','nat/c/spec.jpg','nat/c/ai_pacman.jpg'],['AI 소재·가공 시안','실제 규격','작업지시서','소재 표현 시안'])}</details></section>${storyCredit(p,'브랜드 그래픽 및 2027 SS 개발 프로젝트. 착장 이미지는 AI 합성 시안입니다.')}`;
     return html+caseFooter('nat');
