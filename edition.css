@@ -432,3 +432,15 @@ body.on-hero .site-header{opacity:0;pointer-events:none;transform:translateY(-10
 .glass-pill{transition:background .8s ease,border-color .8s ease}
 .hero-slider{margin-top:-76px}
 @media (max-width:760px){.hero-slider{margin-top:-66px}}
+/* glass nav: fixed & adaptive */
+.glass-nav{position:fixed;z-index:40;transition:top .45s ease}
+body.has-glass .site-header{display:none}
+body.has-glass .hero-slider{margin-top:0}
+body:not(.on-hero) .glass-nav{top:12px}
+body:not(.on-hero) .glass-pill{height:44px;background:linear-gradient(110deg,rgba(7,27,54,.72),rgba(43,37,67,.62));border-color:rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 24px rgba(10,15,40,.22)}
+body:not(.on-hero) .glass-logo img{height:22px}
+body:not(.on-hero) .glass-name{font-size:15px}
+body.on-hero.hero-light .glass-pill{background:linear-gradient(180deg,rgba(40,44,60,.42),rgba(25,28,40,.30));border-color:rgba(255,255,255,.35)}
+.glass-pill{transition:background .6s ease,border-color .6s ease,height .45s ease,box-shadow .6s ease}
+.glass-logo img,.glass-name{transition:height .45s ease,font-size .45s ease}
+body.project-open .glass-nav,dialog[open]~.glass-nav{display:none}
