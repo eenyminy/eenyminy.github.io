@@ -509,3 +509,21 @@ body:not(.on-hero) .glass-menu a,body.hero-light .glass-menu a{color:#141f3c;tex
 @keyframes gTap{0%{transform:scale(1)}35%{transform:scale(.92)}70%{transform:scale(1.06)}100%{transform:scale(1)}}
 @keyframes gShine{to{transform:translateX(120%)}}
 @keyframes gRipple{to{transform:scale(14);opacity:0}}
+/* archive thumbnails */
+.sel-archive{display:block}
+.arc-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:14px}
+.arc-card{display:flex;flex-direction:column;gap:3px;border:0!important;text-decoration:none;color:inherit}
+.arc-img{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:#e8e6e0;margin-bottom:8px}
+.arc-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+.arc-card:hover img{transform:scale(1.04)}
+.arc-card strong{font:600 14px Pretendard,sans-serif}
+.arc-card small{font:12px Pretendard,sans-serif;color:#888}
+/* AS wide banner on mobile: image on top, text below */
+@media (max-width:760px){
+.arc-cards{grid-template-columns:1fr 1fr;gap:12px}
+.sel-main.wide{aspect-ratio:auto;background:#141c38}
+.sel-main.wide img{position:static;height:auto;aspect-ratio:2100/900;object-fit:cover}
+.sel-main.wide::after{display:none}
+.sel-main.wide .sel-copy{position:static;padding:18px 20px 22px}
+}
+.sel-archive{padding-bottom:40px}
