@@ -546,10 +546,20 @@
   syncScroll();showRoute();
 })();
 
-(function(){const r=document.getElementById('hero-slider');if(!r)return;const s=[...r.querySelectorAll('.hs-slide')],d=r.querySelector('.hs-dots');let i=0,t;
+(function(){const r=document.getElementById('hero-slider');if(!r)return;const tr=r.querySelector('.hs-track'),s=[...r.querySelectorAll('.hs-slide')],d=r.querySelector('.hs-dots'),n=s.length;let i=0,t,x0=null,y0=0,dx=0,drag=false,moved=false;
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 s.forEach((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-label',`${k+1}번째 화보`);b.onclick=()=>{go(k);start()};d.appendChild(b)});
-function go(k){s[i].classList.remove('is-active');i=k;s[i].classList.add('is-active');document.body.classList.toggle('hero-light',!!s[i].dataset.light);[...d.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i))}
-function start(){clearInterval(t);if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;t=setInterval(()=>go((i+1)%s.length),5500)}
+['prev','next'].forEach(w=>{const b=document.createElement('button');b.type='button';b.className='hs-arrow hs-'+w;b.setAttribute('aria-label',w==='prev'?'이전 화보':'다음 화보');b.innerHTML='<svg viewBox="0 0 24 24"><path d="'+(w==='prev'?'M15 5l-7 7 7 7':'M9 5l7 7-7 7')+'" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';b.onclick=e=>{e.preventDefault();go((i+(w==='prev'?-1:1)+n)%n);start()};r.appendChild(b)});
+function place(off){tr.style.transform=`translate3d(calc(${-i*100}% + ${off}px),0,0)`;s.forEach((sl,k)=>{const im=sl.querySelector('img');if(im)im.style.transform=`scale(${k===i&&!off?1:1.06})`})}
+function go(k){i=(k+n)%n;tr.classList.remove('dragging');place(0);s.forEach((sl,k2)=>sl.classList.toggle('is-active',k2===i));document.body.classList.toggle('hero-light',!!s[i].dataset.light);[...d.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i))}
+function start(){clearInterval(t);if(rm)return;t=setInterval(()=>go(i+1),5500)}
+r.addEventListener('pointerdown',e=>{if(e.target.closest('.hs-dots,.hs-arrow'))return;x0=e.clientX;y0=e.clientY;dx=0;drag=false;moved=false;clearInterval(t)});
+r.addEventListener('pointermove',e=>{if(x0===null)return;dx=e.clientX-x0;const dy=e.clientY-y0;if(!drag&&Math.abs(dx)>8&&Math.abs(dx)>Math.abs(dy)){drag=true;tr.classList.add('dragging');try{r.setPointerCapture(e.pointerId)}catch(_){}}if(drag){moved=true;const edge=(i===0&&dx>0)||(i===n-1&&dx<0)?0.35:1;place(dx*edge)}});
+function end(){if(x0===null)return;const w=r.clientWidth;if(drag&&Math.abs(dx)>w*0.18)go(i+(dx<0?1:-1));else go(i);x0=null;drag=false;start()}
+r.addEventListener('pointerup',end);r.addEventListener('pointercancel',end);r.addEventListener('lostpointercapture',end);
+r.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
+r.querySelectorAll('img,a').forEach(el=>el.setAttribute('draggable','false'));
+addEventListener('keydown',e=>{if(document.activeElement&&r.contains(document.activeElement)){if(e.key==='ArrowRight'){go(i+1);start()}if(e.key==='ArrowLeft'){go(i-1);start()}}});
 go(0);start();})();
 
 document.addEventListener('click',e=>{const b=e.target.closest('.nlb');if(!b)return;const on=b.classList.toggle('is-on');b.setAttribute('aria-pressed',on);b.classList.remove('fx');void b.offsetWidth;b.classList.add('fx');});
