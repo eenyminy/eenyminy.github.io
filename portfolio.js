@@ -548,8 +548,10 @@
 
 (function(){const r=document.getElementById('hero-slider');if(!r)return;const s=[...r.querySelectorAll('.hs-slide')],d=r.querySelector('.hs-dots');let i=0,t;
 s.forEach((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-label',`${k+1}번째 화보`);b.onclick=()=>{go(k);start()};d.appendChild(b)});
-function go(k){s[i].classList.remove('is-active');i=k;s[i].classList.add('is-active');[...d.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i))}
+function go(k){s[i].classList.remove('is-active');i=k;s[i].classList.add('is-active');r.classList.toggle('is-light',!!s[i].dataset.light);[...d.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i))}
 function start(){clearInterval(t);if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;t=setInterval(()=>go((i+1)%s.length),5500)}
 go(0);start();})();
 
 document.addEventListener('click',e=>{const b=e.target.closest('.nlb');if(!b)return;const on=b.classList.toggle('is-on');b.setAttribute('aria-pressed',on);b.classList.remove('fx');void b.offsetWidth;b.classList.add('fx');});
+
+(function(){const h=document.getElementById('hero-slider');if(!h||!('IntersectionObserver'in window))return;new IntersectionObserver(([e])=>document.body.classList.toggle('on-hero',e.isIntersecting&&e.intersectionRatio>.35),{threshold:[0,.35,1]}).observe(h);})();
