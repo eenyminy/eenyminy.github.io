@@ -298,3 +298,15 @@ body{font-size:16px}
  .spread-offset>.photo-1{grid-column:1/10;margin-top:0}.spread-offset>.photo-2{grid-column:4/13;margin-top:35px}
  .theme-retail .story-spread:first-child>.photo-1{grid-column:1/-1;margin-top:0}.theme-retail .story-spread:first-child>.photo-2{grid-column:5/13;margin-top:25px}
 }
+
+/* AS Science Academy */
+.theme-as{--story-paper:#f4f2ec}
+.theme-as .story-heading{flex-wrap:wrap}.theme-as .story-heading>p{max-width:520px}
+.theme-as .story-technical .story-photo{background:#e4e1d8}.theme-as .story-technical figcaption{color:#333}
+.as-feature{background:#ece9e1;margin-top:30px}
+.as-feature .identity-art{display:flex;flex-direction:column;justify-content:center;gap:28px;padding:48px 8%}
+.as-feature-logo{width:100%;height:auto;mix-blend-mode:multiply}
+.as-feature-books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.as-feature-books img{width:100%;height:auto;box-shadow:0 10px 24px -14px rgba(0,0,0,.45)}
+.as-feature .identity-details img{aspect-ratio:4/3;object-fit:cover}
+.as-feature .identity-art{background:#fff}

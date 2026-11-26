@@ -372,7 +372,27 @@
     html+='</section>';
     return html+storyCredit(p)+caseFooter(p.id);
   }
+  function asCase(p){
+    const e=window.PORTFOLIO_EDITION.as;
+    let html=magazineHeader(p,e.title,'theme-as',e.subtitle);
+    html+=caseNav(e.sections.map(s=>[s.id,s.nav]));
+    for(const s of e.sections){
+      const r=s.refs,c=s.caps||[];
+      html+=`<section class="case-section story-chapter as-${s.layout}" id="case-${s.id}">${storyHeading(esc(s.title),s.copy)}`;
+      if(s.layout==='offset')html+=storySpread(r,c,'offset');
+      else if(s.layout==='identity')html+=storySpread([r[0],r[1]],[c[0],c[1]],'pair')+`<div class="gallery-grid three">${r.slice(2).map((x,i)=>figure(x,c[i+2])).join('')}</div>`;
+      else if(s.layout==='sheets')html+=r.map((x,i)=>storySpread([x],[c[i]],'wide')).join('');
+      else if(s.layout==='series')html+=`<div class="story-technical">${r.slice(0,4).map((x,i)=>still(x,c[i])).join('')}</div>`+storySpread(r.slice(4),c.slice(4),'pair');
+      else if(s.layout==='pair')html+=storySpread(r,c,'offset');
+      else if(s.layout==='three'||s.layout==='cards')html+=`<div class="gallery-grid three">${r.map((x,i)=>figure(x,c[i])).join('')}</div>`;
+      else if(s.layout==='goods')html+=storySpread([r[0]],[c[0]],'wide')+storySpread([r[1]],[c[1]],'wide')+storySpread(r.slice(2),c.slice(2),'pair');
+      else html+=storySpread(r,c,s.layout==='single'?'quiet':'wide');
+      html+='</section>';
+    }
+    return html+storyCredit(p,e.note)+caseFooter(p.id);
+  }
   function magazineCase(p){
+    if(p.id==='as')return asCase(p);
     if(p.id==='oh-vd')return hotelCase(p);
     if(p.brand==='GOLA')return golaCase(p);
     if(window.PORTFOLIO_EDITION?.[p.id])return magazineCurated(p);
