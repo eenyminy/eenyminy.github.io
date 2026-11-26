@@ -268,10 +268,11 @@
   function magazineNat(){
     const p=projects.find(p=>p.id==='nat');
     let html=magazineHeader(p,'N.A.T','theme-nat','Brand assets · 2027 SS');
-    html+=caseNav([['assets','Brand assets'],['identity','Brandbook'],['system','Labels'],['product','Collection'],['graphics','Graphics']]);
+    html+=caseNav([['assets','Brand assets'],['identity','Brandbook'],['system','Labels'],['guide','Guide'],['product','Collection'],['graphics','Graphics']]);
     html+=natAssetsBoard();
     html+=natBookPanels();
     html+=`<section class="case-section nat-detail-story">${storySpread(['nat/label_point.jpg','nat/label_neck_m.jpg'],['포인트 라벨','넥라벨 적용'],'offset')}${storySpread(['nat/tag_metal_m.jpg','nat/story.png'],['금속 태그 시안','Story symbol'],'pair')}<a class="text-link" href="nat.html">N.A.T 브랜드북 전체 보기 ＋</a></section>`;
+    if(data.natGuide)html+=`<section class="case-section" id="case-guide">${storyHeading('Usage guide.','그래픽 · 라벨 · 자수 사용 가이드 · 15p')}${naturalGallery(data.natGuide.refs,data.natGuide.caps,'three',6,'natguide')}</section>`;
     html+=`<section class="case-section" id="case-product">${storyHeading('The collection.','2027 SS · 상품 개발 시안')}`;
     const productBlock=(product)=>`<section class="nat-product-story"><div class="nat-product-caption"><h3>${esc(product.name)}</h3><span>2027 SS</span></div><div class="nat-product-pair">${product.refs.map((r,j)=>still(r,j===0?'Front':'Back')).join('')}</div></section>`;
     const featured=[21,18,28].map(tile=>p.productStories.find(x=>x.tile===tile)).filter(Boolean);
