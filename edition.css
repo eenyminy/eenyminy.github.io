@@ -796,3 +796,8 @@ html,body{overflow-x:clip}
 .tx-strip a{flex:0 0 auto;scroll-snap-align:start}
 .tx-strip img{height:220px;width:auto;border-radius:6px;display:block}
 @media (max-width:760px){.chap-archive .tx-row{grid-template-columns:1fr;gap:14px}.tx-strip{margin:0 -20px;padding:0 20px}.tx-strip img{height:170px}.tx-head i{display:none}}
+.chap-sub{padding-top:clamp(36px,5vw,64px)}
+.sub-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px;padding-top:22px;border-top:1px solid #dcdad3}
+.sub-head .k{font:10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#8a8c90}
+.sub-head b{font:600 16px Pretendard;color:#141f3c}
+.sub-head .chap-more{margin-left:auto}
