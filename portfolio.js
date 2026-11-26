@@ -79,7 +79,7 @@
   function renderIndex() {
     const compact=str=>String(str).toLowerCase().replace(/[\s·×.—-]/g,'');
     const terms=search.trim().split(/\s+/).filter(Boolean).map(compact);
-    const selected=projects.filter(p=>(filter==='all'||(filter==='design'?['brand','graphic'].includes(p.category):filter==='touchpoint'?p.customerTouchpoint:p.category===filter))&&terms.every(term=>compact([p.brand,p.title,p.season,p.tech,...Object.values(p.workRow)].join(' ')).includes(term)));
+    const selected=projects.filter(p=>!p.merged&&(filter==='all'||(filter==='design'?['brand','graphic'].includes(p.category):filter==='touchpoint'?p.customerTouchpoint:p.category===filter))&&terms.every(term=>compact([p.brand,p.title,p.season,p.tech,...Object.values(p.workRow)].join(' ')).includes(term)));
     $('index-title').textContent='Work';$('index-total').textContent=projects.length;
     $('project-index').className='work-table-scroll';
     $('project-index').innerHTML=`<table class="work-table"><caption class="sr-only">프로젝트 목록 — 이름, 브랜드, 분야와 연도</caption><thead><tr><th scope="col">No.</th><th scope="col">Name</th><th scope="col">Brand</th><th scope="col">Category</th><th scope="col">Year</th></tr></thead><tbody>${selected.map(p=>{const r=p.workRow;return `<tr><td>${esc(r.no)}</td><td><a class="work-row-link" href="#project/${p.id}" aria-label="${esc(r.brand+' / '+r.name+' 상세 보기')}">${esc(r.name)}</a></td><td>${esc(r.brand)}</td><td>${esc(r.category)}</td><td>${esc(r.year)}</td></tr>`;}).join('')}</tbody></table>`;
@@ -128,7 +128,7 @@
     return `<nav class="case-anchor-nav" aria-label="이 프로젝트의 구성">${items.map(([id,text])=>`<a href="#case-${id}" data-case-anchor="case-${id}">${text}</a>`).join('')}</nav><div class="page-width case-body">`;
   }
   function caseFooter(id) {
-    const index = projects.findIndex(p => p.id === id), next = projects[(index+1+projects.length)%projects.length];
+    const list=projects.filter(p=>!p.merged), index = list.findIndex(p => p.id === id), next = list[(index+1+list.length)%list.length];
     return `<footer class="case-footer"><button type="button" class="case-list-back" data-close-case>작업 목록으로 돌아가기</button><a href="#project/${next.id}"><small>NEXT PROJECT</small><strong>${esc(next.brand)}</strong></a></footer></div></div>`;
   }
   function naturalGallery(refs,captions=[],cols='',limit=0,key='') {
@@ -248,7 +248,7 @@
   }
   function hotelCase(p){
     let html=magazineHeader(p,'Ordinary Holiday<br>× Von Dutch','theme-hotel','Hotel lookbook · 2025 SS');
-    html+=caseNav([['hotel','Hotel lookbook'],['diary','Hotel diary'],['collection','Collection']]);
+    html+=caseNav([['hotel','25SS Hotel'],['diary','Hotel diary'],['collection','Collection'],['pink','24FW Pink edition']]);
     html+=`<section class="case-section hotel-opening" id="case-hotel"><img class="hotel-signature" src="img/ed/oh-script.png" alt="Ordinary Holiday 원본 레터링">${still(8,'','hotel-small')}${still(71,'','hotel-large')}<span class="hotel-season">2025 SS</span></section>`;
     html+=`<section class="case-section hotel-lace-spread">${still(3,'','hotel-campaign')}<div class="hotel-lace">${asset('ed/oh-lace.png','Von Dutch 원본 레이스 그래픽')}<p>Ordinary Holiday<br>× Von Dutch</p></div></section>`;
     html+=`<section class="case-section">${storySpread(['oh/vd_lb_halter.jpg'],['홀터 셋업 · 9컷'],'wide')}${storySpread([4],[],'quiet')}${storySpread([6],[],'quiet')}${storySpread([54,'oh/vd_lb_pants.jpg'],[],'offset')}</section>`;
@@ -257,7 +257,19 @@
     for(const [i,s] of p.secs.slice(1).entries()){
       html+=`<section class="story-product-chapter">${storyHeading(esc(s.t.split(' — ')[0]).toLowerCase(),s.sub)}${storySequence(s.items.map(x=>x[0]),[],'fashion')}</section>`;
     }
-    html+=`</section>${storyCredit(p,'상품 그래픽·협업 로고 디자인 / 브랜드 룩북 및 상품 사진 사용.')}`;
+    html+=`</section>`;
+    const q=projects.find(x=>x.id==='oh-vd24');
+    if(q){
+      const book=q.secs.find(s=>/LOOKBOOK/.test(s.t));const a=sourceArtSections['oh-vd24'];
+      html+=`<section class="case-section story-collection" id="case-pink">${storyHeading('Pink edition.','2024 FW · 첫 번째 협업')}${book?storySequence(book.items.map(x=>x[0]),[]):''}<section class="story-product-chapter">${storyHeading('Original lettering.')}<div class="story-art-pair">${a.items.map(x=>still(x[0],x[1])).join('')}</div></section>`;
+      for(const s of q.secs.filter(s=>!/LOOKBOOK/.test(s.t))){
+        if(/DETAIL PAGE/.test(s.t)){html+=`<section class="story-product-chapter">${storyHeading('Digital introduction.','상세페이지 인트로 · 레이아웃 보조')}${storySpread(s.items.map(x=>x[0]),[],'quiet')}</section>`;continue;}
+        if(s.t==='PROCESS'){html+=`<details class="artwork-details"><summary>작업 과정</summary>${naturalGallery(s.items.map(x=>x[0]),[],'three')}</details>`;continue;}
+        html+=`<section class="story-product-chapter">${storyHeading(esc(s.t.split(' — ')[0]).toLowerCase(),s.sub)}${storySequence(s.items.map(x=>x[0]),[])}</section>`;
+      }
+      html+=`</section>`;
+    }
+    html+=storyCredit(p,'상품 그래픽·협업 로고 디자인 / 브랜드 룩북 및 상품 사진 사용.');
     return html+caseFooter(p.id);
   }
   function natBookPanels(){
@@ -435,7 +447,8 @@
   function showRoute() {
     const match=location.hash.match(/^#(project|model)\/([\w-]+)(?:\/([\w-]+))?$/);
     if(!match){closeDialog(false);return;}
-    const type=match[1], id=['gola-a24','gola'].includes(match[2])?'gola-w24':match[2], sub=match[2]==='gola'?'halftone':match[2]==='gola-a24'?'campaign':match[3];
+    const type=match[1], id=['gola-a24','gola'].includes(match[2])?'gola-w24':match[2]==='oh-vd24'?'oh-vd':match[2], sub=match[2]==='gola'?'halftone':match[2]==='gola-a24'?'campaign':match[2]==='oh-vd24'?'pink':match[3];
+    if(match[2]==='oh-vd24')history.replaceState(history.state,'','#project/oh-vd/pink');
     if(['gola-a24','gola'].includes(match[2]))history.replaceState(history.state,'',`#project/gola-w24/${sub}`);
     if(activeRoute===`${type}/${id}`&&projectDialog.open){if(sub)jumpToSection(sub);return;}
     const p=projects.find(p=>p.id===id);
