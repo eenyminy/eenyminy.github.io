@@ -313,3 +313,4 @@ body{font-size:16px}
 .cast-directory strong{font-size:clamp(20px,2.2vw,32px);letter-spacing:-.03em}
 @media (max-width:640px){.cast-directory strong{font-size:18px}.cast-directory span{font-size:11px}}
 @media (max-width:640px){.casting-mosaic .cast-directory strong,.casting-mosaic.expanded .cast-directory strong{font-size:15px;letter-spacing:-.01em}}
+.as-video{margin:0 auto;max-width:420px}.as-video video{width:100%;aspect-ratio:9/16;display:block;background:#111;border-radius:6px}.as-video figcaption{font:12px/1.5 Pretendard,sans-serif;color:#777;margin-top:8px}

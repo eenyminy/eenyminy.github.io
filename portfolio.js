@@ -386,6 +386,8 @@
       else if(s.layout==='identity')html+=storySpread([r[0],r[1]],[c[0],c[1]],'pair')+`<div class="gallery-grid three">${r.slice(2).map((x,i)=>figure(x,c[i+2])).join('')}</div>`;
       else if(s.layout==='sheets')html+=r.map((x,i)=>storySpread([x],[c[i]],'wide')).join('');
       else if(s.layout==='series')html+=`<div class="story-technical">${r.slice(0,4).map((x,i)=>still(x,c[i])).join('')}</div>`+storySpread(r.slice(4),c.slice(4),'pair');
+      else if(s.layout==='video')html+=`<figure class="as-video"><video src="${esc(r[0])}" poster="${esc(s.poster||'')}" controls playsinline muted preload="metadata"></video><figcaption>${esc(c[0]||'')}</figcaption></figure>`;
+      else if(s.layout==='slides')html+=storySpread([r[0],r[1]],[c[0],c[1]],'pair')+storySpread([r[2],r[3]],[c[2],c[3]],'pair')+(r[4]?storySpread([r[4]],[c[4]],'quiet'):'');
       else if(s.layout==='four')html+=`<div class="story-technical">${r.map((x,i)=>still(x,c[i])).join('')}</div>`;
       else if(s.layout==='pair')html+=storySpread(r,c,'offset');
       else if(s.layout==='three'||s.layout==='cards')html+=`<div class="gallery-grid three">${r.map((x,i)=>figure(x,c[i])).join('')}</div>`;
