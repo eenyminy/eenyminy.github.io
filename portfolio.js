@@ -22,6 +22,8 @@
     if (typeof ref === 'object') {
       if(ref.file && ref.crop){const [w,h]=imageSizes[ref.file];const [x,y,cw,ch]=ref.crop;return {file:ref.file,fullW:w,fullH:h,x,y,w:cw,h:ch};}
       if (ref.model) {
+        const one = `lk/${ref.model.toLowerCase()}/${String(ref.look).padStart(2,'0')}.jpg`;
+        if (imageSizes[one]) return {file:one, w:imageSizes[one][0], h:imageSizes[one][1], simple:true};
         const file = `lk/${ref.model.toLowerCase()}.jpg`, count = modelCounts[ref.model];
         const [w,h] = imageSizes[file] || [count * 900,1200];
         return {file, fullW:w, fullH:h, x:(w/count)*ref.look, y:0, w:w/count, h};
@@ -383,6 +385,7 @@
       else if(s.layout==='identity')html+=storySpread([r[0],r[1]],[c[0],c[1]],'pair')+`<div class="gallery-grid three">${r.slice(2).map((x,i)=>figure(x,c[i+2])).join('')}</div>`;
       else if(s.layout==='sheets')html+=r.map((x,i)=>storySpread([x],[c[i]],'wide')).join('');
       else if(s.layout==='series')html+=`<div class="story-technical">${r.slice(0,4).map((x,i)=>still(x,c[i])).join('')}</div>`+storySpread(r.slice(4),c.slice(4),'pair');
+      else if(s.layout==='four')html+=`<div class="story-technical">${r.map((x,i)=>still(x,c[i])).join('')}</div>`;
       else if(s.layout==='pair')html+=storySpread(r,c,'offset');
       else if(s.layout==='three'||s.layout==='cards')html+=`<div class="gallery-grid three">${r.map((x,i)=>figure(x,c[i])).join('')}</div>`;
       else if(s.layout==='goods')html+=storySpread([r[0]],[c[0]],'wide')+storySpread([r[1]],[c[1]],'wide')+storySpread(r.slice(2),c.slice(2),'pair');
