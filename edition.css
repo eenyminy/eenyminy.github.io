@@ -570,3 +570,20 @@ border:1px solid rgba(255,255,255,.5)!important;
 box-shadow:inset 0 1.5px 1px rgba(255,255,255,.85),inset 0 -6px 14px rgba(140,160,255,.22),inset 0 0 0 1px rgba(255,255,255,.08),0 12px 30px rgba(10,15,40,.3)!important;
 backdrop-filter:blur(22px) saturate(2) brightness(.85)!important;-webkit-backdrop-filter:blur(22px) saturate(2) brightness(.85)!important}
 @media (max-width:760px){.arc-card:last-child:nth-child(odd){grid-column:1/-1}.arc-card:last-child:nth-child(odd) .arc-img{aspect-ratio:16/8}}
+/* ===== motion: 1 image reveal, 2 heading lines, 3 stacking cards ===== */
+.rv-img{overflow:hidden}
+.rv-img>img{transform:scale(1.14);clip-path:inset(10% 6% 10% 6%);transition:transform 1.3s cubic-bezier(.2,.7,.1,1),clip-path 1.1s cubic-bezier(.2,.7,.1,1)}
+.rv-img.in>img{transform:scale(1);clip-path:inset(0 0 0 0)}
+.sel-main.rv-img.in:hover img{transform:scale(1.03)}
+.rv-line{display:block;overflow:hidden;padding-bottom:.06em}
+.rv-line>span{display:inline-block;transform:translateY(105%);transition:transform .9s cubic-bezier(.2,.7,.1,1)}
+.rv-h.in .rv-line>span{transform:none}
+.rv-h.in .rv-line:nth-child(2)>span{transition-delay:.1s}.rv-h.in .rv-line:nth-child(3)>span{transition-delay:.2s}
+.sel-copy>*{transition:opacity .8s .35s,transform .8s .35s cubic-bezier(.2,.7,.1,1)}
+.rv-img:not(.in) .sel-copy>*{opacity:0;transform:translateY(18px)}
+@media (max-width:760px){
+.sel-mains.stack{display:block}
+.sel-mains.stack .sel-main{position:sticky;top:78px;margin-bottom:16px;box-shadow:0 -10px 30px rgba(0,0,0,.18);transform-origin:center top;will-change:transform}
+.sel-mains.stack .sel-main:last-child{margin-bottom:0}
+}
+@media (prefers-reduced-motion:reduce){.rv-img>img,.rv-line>span,.sel-copy>*{transition:none!important;transform:none!important;clip-path:none!important;opacity:1!important}.sel-mains.stack .sel-main{position:static}}
