@@ -782,3 +782,17 @@ html,body{overflow-x:clip}
 @media (max-width:760px){.chap-beyond .cc-im{aspect-ratio:4/5!important}}
 .chap .chap-card.nat-sub .cc-im{background:linear-gradient(180deg,#ece9de 0%,#ece180 55%,#d9b9a8 100%)!important}
 .chap .chap-card.nat-sub[href$="graphics"] .cc-im{background:#5f5f5f!important}
+/* textile archive: 3 rows */
+.chap-archive .tx-row{display:grid;grid-template-columns:260px 1fr;gap:28px;padding:26px 0;border-top:1px solid #dcdad3}
+.chap-archive .tx-row:last-child{border-bottom:1px solid #dcdad3}
+.tx-head{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit}
+.tx-head small{display:flex;justify-content:space-between;font:10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8a8c90}
+.tx-head small em{font-style:normal}
+.tx-head b{font:500 26px/1.1 Archivo,sans-serif;letter-spacing:-.03em;color:#141f3c}
+.tx-head span{font-size:13px;line-height:1.6;color:#666}
+.tx-head i{font-style:normal;font:600 12px Pretendard;color:#141f3c;margin-top:auto;padding-top:10px}
+.tx-strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.tx-strip::-webkit-scrollbar{display:none}
+.tx-strip a{flex:0 0 auto;scroll-snap-align:start}
+.tx-strip img{height:220px;width:auto;border-radius:6px;display:block}
+@media (max-width:760px){.chap-archive .tx-row{grid-template-columns:1fr;gap:14px}.tx-strip{margin:0 -20px;padding:0 20px}.tx-strip img{height:170px}.tx-head i{display:none}}
