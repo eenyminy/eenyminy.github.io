@@ -555,3 +555,10 @@ go(0);start();})();
 document.addEventListener('click',e=>{const b=e.target.closest('.nlb');if(!b)return;const on=b.classList.toggle('is-on');b.setAttribute('aria-pressed',on);b.classList.remove('fx');void b.offsetWidth;b.classList.add('fx');});
 
 (function(){const h=document.getElementById('hero-slider');if(!h||!('IntersectionObserver'in window))return;document.body.classList.add('has-glass');new IntersectionObserver(([e])=>document.body.classList.toggle('on-hero',e.isIntersecting&&e.intersectionRatio>.12),{threshold:[0,.12,.5,1]}).observe(h);})();
+
+(function(){const nav=document.querySelector('.glass-nav');if(!nav)return;
+const panels={menu:document.getElementById('glass-menu'),profile:document.getElementById('glass-profile')};
+function close(){Object.values(panels).forEach(p=>p.hidden=true);nav.querySelectorAll('[data-glass]').forEach(b=>b.setAttribute('aria-expanded','false'))}
+nav.addEventListener('click',e=>{const b=e.target.closest('[data-glass]');if(b){const k=b.dataset.glass,open=panels[k].hidden;close();if(open){panels[k].hidden=false;nav.querySelectorAll(`[data-glass="${k}"]`).forEach(x=>x.setAttribute('aria-expanded','true'))}e.stopPropagation();return}if(e.target.closest('.glass-menu a'))close()});
+document.addEventListener('click',e=>{if(!e.target.closest('.glass-nav'))close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});})();
