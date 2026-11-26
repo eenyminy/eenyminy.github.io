@@ -722,3 +722,12 @@ body.hero-light .hs-intro{color:#141f3c}
 @media (max-width:760px){#ch-brand .wide .cc-im{aspect-ratio:2100/900!important}#ch-brand .chap-card.wide{flex-basis:88%}}
 .dc-pdf{background:#fff!important;color:#141f3c!important;border:1px solid rgba(20,31,60,.25)}
 .about-pdf{display:inline-flex;margin:0 0 40px}
+/* mobile: every swipe card the same size */
+html,body{overflow-x:clip}
+@media (max-width:760px){
+.chap .chap-row,.chap-data .chap-row{align-items:start!important}
+.chap .chap-card,.chap .chap-card.big,.chap .chap-card.wide,#ch-brand .chap-card,#ch-brand .chap-card.wide,.chap-data .chap-card,.chap-data .chap-card.wide,.chap-archive .chap-card{flex:0 0 72%!important;grid-column:auto!important;grid-row:auto!important}
+.chap .cc-im,.chap .chap-card.big .cc-im,.chap .chap-card.wide .cc-im,#ch-brand .cc-im,#ch-brand .wide .cc-im,.chap-data .cc-im,.chap-archive .cc-im{aspect-ratio:4/5!important;height:auto!important;flex:none!important}
+#ch-brand .wide .cc-im img{object-position:58% 50%}
+.chap-data .cc-im img,.chap-archive .cc-im img{object-position:top left}
+}
