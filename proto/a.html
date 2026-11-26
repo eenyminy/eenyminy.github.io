@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A안 · 능력별 — eenyminy</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="base.css">
+<style>
+.hero{position:relative;height:78svh;min-height:460px;overflow:hidden;background:#111;color:#fff}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.hero div{position:absolute;left:6vw;right:6vw;bottom:9vh;z-index:1}
+.hero h1{font:700 clamp(30px,6vw,64px)/1.08 Archivo,Pretendard;letter-spacing:-.03em;margin:12px 0 10px}
+.hero p{font-size:15px;opacity:.85;max-width:520px;line-height:1.6}
+.hero .k{color:rgba(255,255,255,.8)}
+.toc{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #ddd;border-bottom:1px solid #ddd;background:#f6f5f1;position:sticky;top:0;z-index:5}
+.toc a{padding:14px 12px;font:600 13px Pretendard;border-right:1px solid #e3e1db;display:flex;gap:8px;align-items:baseline}
+.toc a span{font:11px Plex;color:#999}
+.ch{padding:clamp(56px,9vw,120px) 6vw 0}
+.ch-head{display:grid;grid-template-columns:auto 1fr;gap:6px 28px;align-items:end;margin-bottom:26px}
+.num{font:200 clamp(64px,11vw,150px)/.8 Archivo;letter-spacing:-.05em;color:#141f3c;grid-row:span 2}
+.ch h2{font:700 clamp(24px,3.6vw,42px)/1.15 Pretendard;letter-spacing:-.03em}
+.ch-head p{color:#666;font-size:15px;line-height:1.6;max-width:560px}
+.row{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin:0 -6vw;padding-inline:6vw;scroll-padding-inline:6vw;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.card{flex:0 0 min(31%,420px);scroll-snap-align:start;display:block}
+.card .im{aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:#e7e5df}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover img{transform:scale(1.04)}
+.card b{display:block;font:600 15px Pretendard;margin-top:12px}
+.card small{display:block;font:11px Plex;letter-spacing:.08em;color:#888;margin-top:4px}
+.card.wide{flex-basis:min(62%,860px)}.card.wide .im{aspect-ratio:16/10}
+.ch:last-of-type{padding-bottom:120px}
+.why{margin:clamp(56px,9vw,120px) 6vw 0;padding:36px;border-radius:10px;background:#141f3c;color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.why h3{font:700 22px/1.4 Pretendard}.why p{opacity:.8;line-height:1.7;font-size:14px}
+@media (max-width:760px){.toc{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:max-content;overflow-x:auto}.card{flex-basis:72%}.card.wide{flex-basis:88%}.ch-head{grid-template-columns:1fr}.num{grid-row:auto;font-size:64px}.why{grid-template-columns:1fr;padding:26px}}
+</style></head><body>
+<header class="hero"><img src="../img/oh/hd/ss_lb02.jpg" alt=""><div><span class="k">Choi Hyejeong · Graphic &amp; BX Designer</span><h1>브랜드의 시각 언어를<br>상품 끝까지.</h1><p>시즌 그래픽에서 라벨·부자재, 매장 제작물과 AI 비주얼까지 — 다섯 가지 일로 정리한 포트폴리오.</p></div></header>
+<nav class="toc" id="toc"></nav>
+<main id="chs"></main>
+<script src="data.js"></script>
+<script>
+const C=[
+['brand','브랜드를 처음부터 만든다','심볼·시그니처부터 라벨 체계와 굿즈까지, 이름 하나에서 시작해 브랜드가 쓰는 모든 표면을 설계했습니다.',['nat','as']],
+['season','시즌 그래픽을 낸다','캐주얼 브랜드 다섯 곳의 시즌 그래픽. 무드에서 원본 아트워크, 실제 제품과 룩북까지.',['oh-fw','oh-ss','gola-w24','gola-ss','op-ss','cmnz','oh-vd','oh-vd24']],
+['trim','라벨·부자재까지 챙긴다','직조 라벨, 가죽 패치, 메탈 라벨, 택. 제품에 남는 작은 브랜드의 표식.',['oh-label']],
+['touch','매장과 캠페인으로 넓힌다','포스터, 초대장, 팝업 협업 — 고객이 브랜드를 직접 만나는 자리.',['ee-open','oh-invite','lilcherry']],
+['ai','AI로 비주얼을 만든다','14명의 AI 모델 캐스팅과 스타일링, 그리고 기획을 돕는 데이터 대시보드.',['ai','dash26','dashod']]];
+const S=['브랜드 시스템','시즌 그래픽','라벨·부자재','매장·캠페인','AI·데이터'];document.getElementById('toc').innerHTML=C.map((c,i)=>`<a href="#${c[0]}"><span>0${i+1}</span>${S[i]}</a>`).join('');
+document.getElementById('chs').innerHTML=C.map((c,i)=>`<section class="ch" id="${c[0]}"><div class="ch-head"><div class="num">0${i+1}</div><h2>${c[1]}</h2><p>${c[2]}</p></div><div class="row">${c[3].map(id=>{const p=P[id];const wide=['as','oh-label','dash26','dashod'].includes(id);return `<a class="card${wide?' wide':''}" href="${LINK(id)}"><div class="im"><img src="${IMG(p.img[0])}" alt="" loading="lazy"></div><b>${p.b}</b><small>${p.t} · ${p.y}</small></a>`}).join('')}</div></section>`).join('')+`<section class="why"><h3>"PB 캐주얼에서 필요한 건,<br>시즌마다 새 그래픽을 내면서도<br>브랜드가 흔들리지 않게 하는 일."</h3><p>캐주얼 브랜드 다섯 곳에서 시즌 그래픽을 내고, 라벨·택·매장 제작물까지 한 브랜드의 시각 언어를 이어 왔습니다. 위 다섯 챕터는 그 일을 순서대로 보여줍니다.</p></section>`;
+</script>
+</body></html>

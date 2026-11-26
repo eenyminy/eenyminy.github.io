@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C안 · 인덱스 — eenyminy</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="base.css">
+<style>
+body{background:#f6f5f1}
+header{padding:clamp(40px,8vw,90px) 6vw 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+header h1{font:700 clamp(44px,9vw,120px)/.9 Archivo;letter-spacing:-.05em}
+header h1 sup{font:400 14px Plex;vertical-align:top;margin-left:6px;letter-spacing:0}
+header p{max-width:360px;color:#555;line-height:1.6;font-size:14px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;padding:0 6vw 18px}
+.filters button{font:500 13px Pretendard;padding:8px 14px;border-radius:999px;border:1px solid #cfcdc6;background:none;cursor:pointer}
+.filters button[aria-pressed=true]{background:#141f3c;color:#fff;border-color:#141f3c}
+ol{list-style:none;border-top:1px solid #111;margin:0 6vw 120px}
+li{border-bottom:1px solid #d6d4cd}
+.r{display:grid;grid-template-columns:48px 1.4fr 1.2fr 1fr 110px;gap:16px;align-items:baseline;padding:18px 0;cursor:pointer;transition:padding .35s cubic-bezier(.2,.7,.1,1),color .2s}
+.r:hover{padding-left:14px;color:#2b3f8f}
+.r .n{font:12px Plex;color:#999}.r b{font:600 clamp(16px,1.6vw,20px) Pretendard;letter-spacing:-.01em}
+.r span{font-size:14px;color:#555}.r .y{font:12px Plex;color:#777;text-align:right}
+.ex{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.7,.1,1)}
+li.open .ex{grid-template-rows:1fr}
+.ex>div{overflow:hidden}
+.strip{display:flex;gap:10px;overflow-x:auto;padding:4px 0 18px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.strip img{height:min(46vw,260px);border-radius:6px;scroll-snap-align:start}
+.strip a{align-self:center;flex:0 0 auto;padding:12px 18px;border-radius:999px;background:#141f3c;color:#fff;font:600 13px Pretendard;margin-right:6vw}
+.float{position:fixed;left:0;top:0;width:280px;aspect-ratio:4/5;pointer-events:none;z-index:50;border-radius:8px;overflow:hidden;opacity:0;transform:translate(-50%,-50%) scale(.9) rotate(-2deg);transition:opacity .25s,transform .35s cubic-bezier(.2,.7,.1,1);box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.float.on{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}
+.float img{width:100%;height:100%;object-fit:cover}
+@media (hover:none),(max-width:760px){.float{display:none}.r{grid-template-columns:34px 1fr auto;row-gap:4px}.r span.cat{display:none}.r span.br{grid-column:2;font-size:12px}.r .y{grid-row:1;grid-column:3}}
+</style></head><body>
+<header><h1>Work<sup id="count"></sup></h1><p>최혜정 · Graphic &amp; BX Designer. 작업명을 누르면 사진이 펼쳐지고, 컴퓨터에서는 마우스를 올리면 사진이 따라와요.</p></header>
+<div class="filters" id="f"></div>
+<ol id="list"></ol>
+<div class="float" id="fl"><img alt=""></div>
+<script src="data.js"></script>
+<script>
+const order=['nat','oh-fw','oh-ss','oh-vd','oh-vd24','gola-w24','gola-ss','op-ss','cmnz','oh-label','as','ee-open','oh-invite','lilcherry','ai','dash26','dashod','texworld','eland','silknavi'];
+const cats=['전체',...new Set(order.map(id=>P[id].c))];let cur='전체';
+const list=document.getElementById('list'),fl=document.getElementById('fl'),fi=fl.querySelector('img');
+function render(){const ids=order.filter(id=>cur==='전체'||P[id].c===cur);document.getElementById('count').textContent=ids.length;
+ list.innerHTML=ids.map((id,i)=>{const p=P[id];return `<li data-id="${id}"><div class="r"><span class="n">${String(i+1).padStart(2,'0')}</span><b>${p.t}</b><span class="br">${p.b}</span><span class="cat">${p.c}</span><span class="y">${p.y}</span></div><div class="ex"><div><div class="strip">${p.img.map(im=>`<img src="${IMG(im)}" alt="" loading="lazy">`).join('')}<a href="${LINK(id)}">프로젝트 열기 →</a></div></div></div></li>`}).join('')}
+document.getElementById('f').innerHTML=cats.map(c=>`<button aria-pressed="${c===cur}">${c}</button>`).join('');
+document.getElementById('f').onclick=e=>{const b=e.target.closest('button');if(!b)return;cur=b.textContent;[...e.currentTarget.children].forEach(x=>x.setAttribute('aria-pressed',x===b));render()};
+list.onclick=e=>{const li=e.target.closest('li');if(!li||e.target.closest('a'))return;const was=li.classList.contains('open');list.querySelectorAll('li.open').forEach(x=>x.classList.remove('open'));if(!was)li.classList.add('open')};
+list.addEventListener('mouseover',e=>{const r=e.target.closest('.r');if(!r)return;fi.src=IMG(P[r.parentNode.dataset.id].img[0]);fl.classList.add('on')});
+list.addEventListener('mouseout',e=>{if(!e.relatedTarget||!e.relatedTarget.closest||!e.relatedTarget.closest('.r'))fl.classList.remove('on')});
+addEventListener('mousemove',e=>{fl.style.left=e.clientX+180+'px';fl.style.top=e.clientY+'px'});
+render();
+</script>
+</body></html>

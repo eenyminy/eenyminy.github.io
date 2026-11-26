@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B안 · 매거진 — eenyminy</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="base.css">
+<style>
+html,body{height:100%;background:#000}
+.book{height:100svh;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none}
+.book::-webkit-scrollbar{display:none}
+.chap{position:relative;height:100svh;scroll-snap-align:start;scroll-snap-stop:always}
+.track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.pg{position:relative;flex:0 0 100%;height:100%;scroll-snap-align:start;overflow:hidden;color:#fff}
+.pg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;transform:scale(1.06);transition:transform 1.4s cubic-bezier(.2,.7,.1,1)}
+.pg.on img{transform:none}
+.pg::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.6));pointer-events:none}
+.cap{position:absolute;left:6vw;right:6vw;bottom:12svh;z-index:2;transition:opacity .7s .2s,transform .8s .2s cubic-bezier(.2,.7,.1,1)}
+.pg:not(.on) .cap{opacity:0;transform:translateY(20px)}
+.cap .k{color:rgba(255,255,255,.8)}
+.cap h2{font:700 clamp(32px,6vw,72px)/1.05 Archivo,Pretendard;letter-spacing:-.035em;margin:10px 0 8px}
+.cap p{font-size:14px;opacity:.85}
+.cap a{display:inline-block;margin-top:16px;padding:11px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:linear-gradient(135deg,rgba(255,255,255,.3),rgba(255,255,255,.08));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:600 13px Pretendard}
+.no{position:absolute;top:22px;left:6vw;z-index:3;font:11px Plex;letter-spacing:.14em;color:#fff;mix-blend-mode:difference}
+.cnt{position:absolute;top:22px;right:6vw;z-index:3;font:11px Plex;letter-spacing:.14em;color:#fff;mix-blend-mode:difference}
+.bar{position:absolute;left:6vw;right:6vw;bottom:calc(12svh - 30px);z-index:3;display:flex;gap:4px}
+.bar i{flex:1;height:2px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden}
+.bar i.on{background:#fff}
+.hint{position:absolute;right:6vw;bottom:calc(12svh - 58px);z-index:3;font:11px Plex;color:rgba(255,255,255,.75);letter-spacing:.1em}
+.light .pg,.light .no,.light .cnt{color:#111}
+.cover{background:#141f3c;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 8vw}
+.cover h1{font:700 clamp(40px,8vw,96px)/1 Archivo;letter-spacing:-.04em;margin:14px 0}
+.cover p{opacity:.8;line-height:1.7;max-width:460px}
+.cover .k{color:rgba(255,255,255,.7)}
+.cover small{margin-top:40px;font:11px Plex;letter-spacing:.14em;opacity:.7}
+</style></head><body>
+<div class="book" id="book"><section class="chap cover"><span class="k">eenyminy · portfolio book</span><h1>Choi<br>Hyejeong.</h1><p>브랜드 하나가 한 챕터예요. 아래로 내리면 다음 브랜드, 옆으로 넘기면 그 브랜드의 시즌과 작업.</p><small>SCROLL ↓ · SWIPE →</small></section></div>
+<script src="data.js"></script>
+<script>
+const CH=[
+['N.A.T','Now and tomorrow.',['nat']],
+['ORDINARY HOLIDAY','Seasons & collaborations.',['oh-ss','oh-fw','oh-vd','oh-vd24','oh-invite']],
+['GOLA','Love All Gola.',['gola-w24','gola-ss']],
+['OCEAN PACIFIC','Summer Midnight Beach.',['op-ss']],
+['COMONINOZ','Graphics, made tangible.',['cmnz']],
+['LABEL & TRIM','Small marks, every brand.',['oh-label']],
+['AS SCIENCE','From logo to classroom.',['as']],
+['STORE & POP-UP','Where people meet brands.',['ee-open','lilcherry']],
+['AI CASTING','14 identities.',['ai']]];
+const book=document.getElementById('book');
+CH.forEach((c,ci)=>{const pages=c[2].flatMap(id=>P[id].img.slice(0,id==='nat'?3:2).map((im,k)=>({id,im,k})));
+ const s=document.createElement('section');s.className='chap';
+ s.innerHTML=`<span class="no">${String(ci+1).padStart(2,'0')} / ${String(CH.length).padStart(2,'0')} — ${c[0]}</span><span class="cnt">1 / ${pages.length}</span><div class="track">${pages.map((pg,i)=>{const p=P[pg.id];return `<div class="pg"><img src="${IMG(pg.im)}" alt="" loading="lazy">${pg.k===0||i===0?`<div class="cap"><span class="k">${p.b} · ${p.y}</span><h2>${i===0?c[1]:p.t}</h2><p>${p.t} — ${p.c}</p><a href="${LINK(pg.id)}">프로젝트 보기</a></div>`:''}</div>`}).join('')}</div>${pages.length>1?`<div class="bar">${pages.map((_,i)=>`<i class="${i===0?'on':''}"></i>`).join('')}</div><span class="hint">옆으로 넘기기 →</span>`:''}`;
+ book.appendChild(s);
+ const tr=s.querySelector('.track'),bars=[...s.querySelectorAll('.bar i')],cnt=s.querySelector('.cnt'),pgs=[...s.querySelectorAll('.pg')];
+ const upd=()=>{const i=Math.round(tr.scrollLeft/tr.clientWidth);bars.forEach((b,j)=>b.classList.toggle('on',j<=i));cnt.textContent=`${i+1} / ${pages.length}`;pgs.forEach((p,j)=>p.classList.toggle('on',j===i))};
+ tr.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});pgs[0].classList.add('on');
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target.querySelector('.track');if(t)t.dispatchEvent(new Event('scroll'))}}),{root:book,threshold:.6});
+document.querySelectorAll('.chap').forEach(c=>io.observe(c));
+addEventListener('keydown',e=>{const c=[...document.querySelectorAll('.chap')].find(c=>Math.abs(c.getBoundingClientRect().top)<10);const t=c&&c.querySelector('.track');if(!t)return;if(e.key==='ArrowRight')t.scrollBy({left:t.clientWidth,behavior:'smooth'});if(e.key==='ArrowLeft')t.scrollBy({left:-t.clientWidth,behavior:'smooth'})});
+</script>
+</body></html>
