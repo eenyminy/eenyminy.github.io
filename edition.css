@@ -363,3 +363,8 @@ body{font-size:16px}
 .sel-main.light .sel-copy .kicker{color:#666}
 .sel-main.light .sel-btn{background:#111;color:#fff}
 @media (max-width:760px){.hero-slider{height:72vh;margin-bottom:36px}}
+.nat-ref-note{max-width:760px;margin:0 0 28px;padding:16px 20px;border-left:3px solid #b23a3a;background:rgba(178,58,58,.06);font:14px/1.7 Pretendard,sans-serif}
+.nat-ref-note strong{display:block;margin-bottom:4px}
+.nat-ref-h{font:600 16px Pretendard,sans-serif;margin:32px 0 14px}
+#case-brief .gallery-grid figure{opacity:.92}
+.nat-ref-arrow{margin:40px 0 0;font:600 15px Pretendard,sans-serif;text-align:center;color:#555}

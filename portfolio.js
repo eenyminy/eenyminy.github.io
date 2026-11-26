@@ -268,11 +268,12 @@
   function magazineNat(){
     const p=projects.find(p=>p.id==='nat');
     let html=magazineHeader(p,'N.A.T','theme-nat','Brand assets · 2027 SS');
-    html+=caseNav([['assets','Brand assets'],['identity','Brandbook'],['system','Labels'],['guide','Guide'],['product','Collection'],['graphics','Graphics']]);
+    html+=caseNav([['assets','Brand assets'],['identity','Brandbook'],['system','Labels'],['brief','Brief'],['guide','Guide'],['product','Collection'],['graphics','Graphics']]);
     html+=natAssetsBoard();
     html+=natBookPanels();
     html+=`<section class="case-section nat-detail-story">${storySpread(['nat/label_point.jpg','nat/label_neck_m.jpg'],['포인트 라벨','넥라벨 적용'],'offset')}${storySpread(['nat/tag_metal_m.jpg','nat/story.png'],['금속 태그 시안','Story symbol'],'pair')}<a class="text-link" href="nat.html">N.A.T 브랜드북 전체 보기 ＋</a></section>`;
-    if(data.natGuide)html+=`<section class="case-section" id="case-guide">${storyHeading('Usage guide.','그래픽 · 라벨 · 자수 사용 가이드 · 15p')}${naturalGallery(data.natGuide.refs,data.natGuide.caps,'three',6,'natguide')}</section>`;
+    if(data.natRef)html+=`<section class="case-section" id="case-brief">${storyHeading('From brief to output.','방향 자료 → 그래픽·라벨 가이드')}<p class="nat-ref-note"><strong>참고 자료 · 본인 작업물이 아닙니다.</strong> 아래 이미지는 NAT 그래픽 개발의 출발점이 된 브랜드 방향 자료와 무드보드로, 레퍼런스 사진의 저작권은 각 출처에 있습니다. 이 방향에서 어떤 결과물을 만들었는지는 바로 다음 Usage guide에서 볼 수 있습니다.</p><h3 class="nat-ref-h">26FW 브랜드 방향 · 런칭 제안</h3>${naturalGallery(data.natRef.deck,[],'three',6,'natdeck')}<h3 class="nat-ref-h">27SS 무드보드</h3>${naturalGallery(data.natRef.mood,[],'three',6,'natmood')}<p class="nat-ref-arrow">↓ 이 방향에서 만든 결과물</p></section>`;
+    if(data.natGuide)html+=`<section class="case-section" id="case-guide">${storyHeading('Usage guide.','직접 제작 · 그래픽 · 라벨 · 자수 사용 가이드 · 15p')}${naturalGallery(data.natGuide.refs,data.natGuide.caps,'three',6,'natguide')}</section>`;
     html+=`<section class="case-section" id="case-product">${storyHeading('The collection.','2027 SS · 상품 개발 시안')}`;
     const productBlock=(product)=>`<section class="nat-product-story"><div class="nat-product-caption"><h3>${esc(product.name)}</h3><span>2027 SS</span></div><div class="nat-product-pair">${product.refs.map((r,j)=>still(r,j===0?'Front':'Back')).join('')}</div></section>`;
     const featured=[21,18,28].map(tile=>p.productStories.find(x=>x.tile===tile)).filter(Boolean);
