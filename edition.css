@@ -541,3 +541,6 @@ body:not(.on-hero) .glass-menu a:hover{background:linear-gradient(110deg,rgba(32
 .sel-main.wide::after{inset:35% 0 0;background:linear-gradient(transparent,rgba(10,16,40,.85))}
 @media (min-width:761px){.sel-main.wide::after{inset:0;background:linear-gradient(90deg,rgba(10,16,40,.92) 0,rgba(10,16,40,.75) 38%,rgba(10,16,40,0) 62%)}.sel-main.wide .sel-copy{max-width:44%}}
 @media (max-width:760px){.sel-main.nat-card{aspect-ratio:3/4.6}.sel-main.nat-card img{object-fit:contain;object-position:top}}
+.sel-sub.label-tile{background:#e9e7e1}
+.sel-sub.label-tile img{object-fit:contain;padding:22% 12% 12%}
+.sel-sub.label-tile span{color:#141f3c;text-shadow:none}
