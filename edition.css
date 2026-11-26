@@ -544,3 +544,6 @@ body:not(.on-hero) .glass-menu a:hover{background:linear-gradient(110deg,rgba(32
 .sel-sub.label-tile{background:#e9e7e1}
 .sel-sub.label-tile img{object-fit:contain;padding:22% 12% 12%}
 .sel-sub.label-tile span{color:#141f3c;text-shadow:none}
+
+.sel-main.nat-card{background:#2a223a}
+.sel-main.nat-card::after{inset:60% 0 0;background:linear-gradient(rgba(40,34,58,0),rgba(30,24,44,.55))}
