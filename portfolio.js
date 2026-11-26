@@ -357,7 +357,7 @@
     if(p.collageSpreads)return textileCollageCase(p);
     if(p.category==='data'||p.book)return generalCase(p);
     let html=magazineHeader(p,esc(p.title),p.category==='textile'?'theme-textile':'theme-fashion');
-    html+=caseNav([['lookbook',p.category==='textile'?'Campaign & textile':'Lookbook'],['collection','Collection']]);
+    html+=caseNav(p.secs.length>1?[['lookbook',p.category==='textile'?'Campaign & textile':'Lookbook'],['collection','Collection']]:[['lookbook','Lookbook']]);
     if(p.id==='eland'){
       const first=p.secs[0];html+=`<section class="case-section" id="case-lookbook">${storyHeading('Snow White.','ROEM × DISNEY')}${storySpread([p.cover],[],'quiet')}${storySpread([first.items[0][0],first.items[2][0]],[],'offset')}</section>`;
     }else{
