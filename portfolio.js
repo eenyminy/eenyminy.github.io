@@ -342,7 +342,8 @@
   function golaCase(p){
     let html=magazineHeader(p,'GOLA','theme-gola',p.title);
     const books=p.secs.filter(s=>s.t==='LOOKBOOK');
-    html+=caseNav([['campaign','Campaign'],['collection','Collection'],...(p.halftone?[['halftone','Halftone']]:[])]);
+    const ss=p.id==='gola-w24'?projects.find(x=>x.id==='gola-ss'):null;
+    html+=caseNav([['campaign','Campaign'],['collection','Collection'],...(p.halftone?[['halftone','Halftone']]:[]),...(ss?[['ss','25SS']]:[])]);
     html+=`<section class="case-section gola-intro" id="case-campaign"><div class="gola-issue"><span>${esc(p.season)}</span><p>${esc(p.title)}</p></div>${storySpread([p.cover],[],'wide')}</section>`;
     for(const [i,b] of books.entries()){
       const refs=b.items.map(x=>x[0]).filter(r=>r!==p.cover);
@@ -354,6 +355,13 @@
     }
     if(p.halftone){
       html+=`<section class="case-section gola-halftone" id="case-halftone">${storyHeading('HALFTONE<br>IN MOTION.','2024 FW')}${storySpread(p.halftone[0].refs.slice(0,2),p.halftone[0].caps.slice(0,2),'offset')}${p.halftone[0].refs.length>2?storySpread(p.halftone[0].refs.slice(2),p.halftone[0].caps.slice(2),'quiet'):''}<div class="story-technical">${p.halftone[1].refs.map((r,i)=>still(r,p.halftone[1].caps[i])).join('')}</div><details class="artwork-details"><summary>전체 제작 도안</summary><div class="story-technical">${p.halftone[2].refs.map((r,i)=>still(r,p.halftone[2].caps[i])).join('')}</div></details></section>`;
+    }
+    if(ss){
+      const bk=ss.secs.find(s=>s.t==='LOOKBOOK');
+      html+=`<section class="case-section gola-lookbook" id="case-ss">${storyHeading('Summer.',ss.season)}${bk?storySequence(bk.items.map(x=>x[0]),[],'sport'):''}</section>`;
+      for(const [i,s] of ss.secs.filter(s=>s.t!=='LOOKBOOK').entries()){
+        html+=`<section class="case-section story-product-chapter ${i%3===2?'gola-dark':''}">${storyHeading(esc(s.t.split(' — ')[1]||s.t),s.sub)}${storySequence(s.items.map(x=>x[0]),[],'sport')}</section>`;
+      }
     }
     return html+storyCredit(p)+caseFooter(p.id);
   }
@@ -447,7 +455,8 @@
   function showRoute() {
     const match=location.hash.match(/^#(project|model)\/([\w-]+)(?:\/([\w-]+))?$/);
     if(!match){closeDialog(false);return;}
-    const type=match[1], id=['gola-a24','gola'].includes(match[2])?'gola-w24':match[2]==='oh-vd24'?'oh-vd':match[2], sub=match[2]==='gola'?'halftone':match[2]==='gola-a24'?'campaign':match[2]==='oh-vd24'?'pink':match[3];
+    const type=match[1], id=['gola-a24','gola','gola-ss'].includes(match[2])?'gola-w24':match[2]==='oh-vd24'?'oh-vd':match[2], sub=match[2]==='gola'?'halftone':match[2]==='gola-a24'?'campaign':match[2]==='oh-vd24'?'pink':match[2]==='gola-ss'?'ss':match[3];
+    if(match[2]==='gola-ss')history.replaceState(history.state,'','#project/gola-w24/ss');
     if(match[2]==='oh-vd24')history.replaceState(history.state,'','#project/oh-vd/pink');
     if(['gola-a24','gola'].includes(match[2]))history.replaceState(history.state,'',`#project/gola-w24/${sub}`);
     if(activeRoute===`${type}/${id}`&&projectDialog.open){if(sub)jumpToSection(sub);return;}
