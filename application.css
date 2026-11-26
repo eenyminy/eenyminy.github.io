@@ -1,0 +1,90 @@
+/* Application edition: facts beside the title, original artwork below. */
+.case-top,.magazine .case-top,.magazine.theme-hotel .case-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,.85fr);gap:clamp(35px,5vw,85px);align-items:start;padding-top:62px;padding-bottom:48px}
+.case-top .case-heading h1{font:500 clamp(46px,5.4vw,80px)/1.04 Archivo,Pretendard,sans-serif;letter-spacing:-.055em;overflow-wrap:anywhere}
+.case-heading .case-kicker{display:block;font-size:12px;line-height:1.6;margin-bottom:24px;letter-spacing:.05em}
+.case-heading .case-subtitle{font-size:16px;line-height:1.7;margin-top:24px;color:#777}
+.case-facts-block{min-width:0}.case-facts{border-collapse:collapse;width:100%;table-layout:fixed;font-size:14px;line-height:1.7;color:inherit}
+.case-facts th,.case-facts td{padding:11px 0;vertical-align:top;border-top:1px solid #bbb;text-align:left}
+.case-facts th{width:105px;font:400 12px/1.8 Archivo,sans-serif;color:#737373;letter-spacing:.02em;padding-right:15px}
+.case-facts td{overflow-wrap:break-word}.case-facts tr:last-child>*{border-bottom:1px solid #bbb}
+.case-facts-block .case-note{font-size:12px;line-height:1.8;color:#777;margin-top:19px}
+.theme-hotel .case-top h1{display:block}.theme-hotel .case-top .case-heading{display:block}
+/* Native table with a single full-row link, keeping the supplied order. */
+.work-index-heading{display:flex;align-items:flex-start;gap:18px;margin-bottom:40px;color:#111}
+.index-section .work-index-heading h2{font:500 clamp(90px,15vw,210px)/.9 Archivo,Pretendard,sans-serif;letter-spacing:-.07em}
+.work-index-heading>span{font:400 22px/1 Archivo,sans-serif;margin-top:7px}
+.work-table-scroll{width:100%;overflow-x:auto;scrollbar-width:thin;padding-bottom:4px}
+.work-table{width:100%;min-width:820px;border-collapse:collapse;table-layout:fixed;color:#161616;font-size:16px;line-height:1.45}
+.work-table th,.work-table td{border-bottom:1px solid #bbb;text-align:left;padding:14px 12px 14px 0;vertical-align:middle;font-weight:400}
+.work-table thead th{font-size:13px;color:#747474;padding-bottom:10px}
+.work-table th:first-child,.work-table td:first-child{width:5%;font:12px 'IBM Mono',monospace;color:#777}
+.work-table th:nth-child(2){width:32%}.work-table th:nth-child(3){width:29%}.work-table th:nth-child(4){width:20%}.work-table th:last-child{width:14%}
+.work-table td:last-child,.work-table th:last-child{text-align:right;padding-right:0}
+.work-table tbody tr{position:relative;transition:background .15s,color .15s}
+.work-row-link{display:block;padding-block:2px}.work-row-link:after{content:'';position:absolute;inset:0;z-index:1}
+.work-table tbody tr:hover{background:#e8e8e3}.work-row-link:focus-visible{outline:none}.work-table tr:has(a:focus-visible){outline:2px solid #222;outline-offset:-2px}
+.work-table tbody tr:hover .work-row-link{text-decoration:underline;text-underline-offset:4px}
+/* Slogan, symbol, signature, story, colour and observable application rules. */
+.brand-assets-board{background:#fff;color:#171717;padding:50px!important;border:1px solid #d9d9d3;margin-block:30px 100px!important}
+.brand-assets-heading{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;margin-bottom:42px}
+.brand-assets-heading .kicker{grid-column:1/-1;font-size:12px;margin-bottom:0;color:#888}
+.brand-assets-heading h2{font:500 clamp(35px,4vw,58px)/1 Archivo,sans-serif;letter-spacing:-.05em}
+.brand-assets-heading p{font:14px/1.9 Pretendard,sans-serif;max-width:480px}
+.nat-asset-sequence{display:grid;grid-template-columns:1fr 1fr;gap:0 42px}
+.nat-asset-cell{border-top:1px solid #aaa;padding:24px 0 32px;margin:0;min-width:0}
+.nat-asset-cell h3,.nat-asset-cell figcaption{font:400 13px Archivo,sans-serif;color:#777;margin:0 0 24px}
+.nat-asset-slogan{grid-column:1/-1;padding-bottom:45px}.nat-asset-slogan>p{font:500 clamp(27px,4vw,56px)/1.1 Archivo,sans-serif;letter-spacing:-.05em}
+.nat-asset-symbol img{width:45%;max-width:190px;height:auto;margin:20px auto 10px}.nat-asset-signature{display:flex;flex-direction:column}.nat-asset-signature img{width:100%;height:auto;margin:auto 0}
+.nat-asset-story img{width:75%;max-width:290px;height:auto;margin:15px auto 0}
+.nat-asset-colors{display:flex;flex-direction:column}.nat-color-swatches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 16px;margin:auto 0}
+.nat-color-swatches span{display:block;aspect-ratio:1.45;border:1px solid #ddd}.nat-color-swatches small{display:block;font:11px/1.6 'IBM Mono',monospace;color:#777;margin-top:10px}
+.nat-asset-rules{grid-column:1/-1;display:grid;grid-template-columns:1fr 2fr;gap:0 30px}.nat-asset-rules h3{grid-column:1;grid-row:1}.nat-asset-rules .asset-rule-note{font-size:12px;color:#888;grid-column:1;grid-row:2}
+.nat-asset-rules ul{grid-column:2;grid-row:1/3;padding-left:19px;margin:0;font:14px/1.9 Pretendard,sans-serif}.nat-asset-rules li+li{margin-top:12px}
+.nat-credit-split{border-top:1px solid #aaa;padding-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.nat-credit-split h3{font:500 15px/1.6 Archivo,Pretendard,sans-serif;margin-bottom:12px}.nat-credit-split h3 span{font-weight:400;color:#777}.nat-credit-split p{font:14px/1.9 Pretendard,sans-serif}
+/* Four existing works, with ownership separated from supporting records. */
+.customer-touchpoints{display:grid;grid-template-columns:1fr 1fr;gap:65px 30px}
+.customer-touchpoint{display:block;min-width:0}.touchpoint-image{background:#ecece8;aspect-ratio:1.05;display:flex;align-items:center;justify-content:center;padding:28px;overflow:hidden}
+.touchpoint-image .asset{display:block;width:auto;max-width:100%;height:100%;aspect-ratio:auto!important}.touchpoint-image .asset-img{width:auto;max-width:100%;height:100%;object-fit:contain}.touchpoint-image .asset-sprite{width:100%;height:100%!important}
+.touchpoint-copy{margin-top:23px}.touchpoint-copy>span{font:12px 'IBM Mono',monospace;color:#777}.touchpoint-copy h3{font:500 clamp(22px,2.4vw,32px)/1.2 Archivo,Pretendard,sans-serif;letter-spacing:-.04em;margin-top:12px}
+.touchpoint-copy p{font:15px/1.8 Pretendard,sans-serif;color:#666;margin-top:14px;max-width:540px}.touchpoint-copy small{display:block;font:13px/1.7 Pretendard,sans-serif;margin-top:16px;color:#333}
+.touchpoint-attribution{font:12px/1.8 Pretendard,sans-serif;color:#888;margin-top:30px}
+/* AI systems describe actual workflows, without invented impact metrics. */
+.ai-system-section{padding-top:100px}.ai-system-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #888;border-bottom:1px solid #bbb;color:#171717}
+.ai-system-card{padding:32px 28px 35px 0;min-width:0}.ai-system-card+.ai-system-card{padding-left:28px;border-left:1px solid #ccc}
+.ai-system-card .kicker{font-size:11px;margin-bottom:25px;color:#777}.ai-system-card h3{font:500 28px/1.2 Archivo,Pretendard,sans-serif;letter-spacing:-.04em}
+.system-subtitle{font:14px/1.7 Pretendard,sans-serif;margin-top:17px;color:#777;min-height:50px}
+.system-flow{margin-top:28px;font:14px/1.8 Pretendard,sans-serif}.system-flow>div{display:grid;grid-template-columns:36px 1fr;gap:15px;padding:12px 0;border-top:1px solid #d6d6d1}
+.system-flow dt{font-size:12px;color:#777}.system-flow dd{margin:0}.ai-system-card .text-link{display:flex;width:max-content;max-width:100%;font-size:13px;margin-top:24px;white-space:normal;line-height:1.6}
+.system-scope{font:12px/1.8 Pretendard,sans-serif;color:#888;margin-top:16px}
+.case-body>.system-flow{max-width:780px;margin-top:30px;margin-bottom:55px}.case-body>.system-flow>div{grid-template-columns:50px 1fr;padding-block:17px;font-size:16px}
+.standalone-brandbook{background:#f8f7f3;color:#171717;padding:90px 6vw 30px}.standalone-brandbook .case-top{padding-top:30px}.standalone-brandbook .case-kicker{color:#777}.standalone-brandbook .brand-assets-board{margin-bottom:30px!important}
+@media(max-width:760px){
+.case-top,.magazine .case-top,.magazine.theme-hotel .case-top{display:grid;grid-template-columns:1fr;gap:30px;padding-top:34px;padding-bottom:30px}.case-top .case-heading h1{font-size:43px;letter-spacing:-.05em}.case-heading .case-kicker{font-size:11px;margin-bottom:17px}.case-heading .case-subtitle{font-size:15px;margin-top:17px}.case-facts{font-size:13px;line-height:1.8}.case-facts th{width:96px;font-size:12px;padding-right:12px}.case-facts th,.case-facts td{padding-block:10px}.case-facts-block .case-note{font-size:12px}
+.work-index-heading{margin-bottom:30px;gap:13px}.index-section .work-index-heading h2{font-size:98px}.work-index-heading>span{font-size:17px;margin-top:4px}.work-table{min-width:760px;font-size:14px}.work-table th,.work-table td{padding-block:13px}.work-table th:first-child{width:5%}.work-table th:nth-child(2){width:31%}.work-table th:nth-child(3){width:29%}.work-table th:nth-child(4){width:20%}.work-table th:last-child{width:15%}
+.brand-assets-board{padding:25px 20px!important;margin-block:20px 65px!important}.brand-assets-heading{display:block;margin-bottom:30px}.brand-assets-heading h2{font-size:36px;margin-top:15px}.brand-assets-heading p{font-size:13px;line-height:1.9;margin-top:18px}.nat-asset-sequence{gap:0 20px}.nat-asset-cell{padding-top:20px;padding-bottom:25px}.nat-asset-cell h3,.nat-asset-cell figcaption{font-size:12px;margin-bottom:20px}.nat-asset-slogan>p{font-size:31px;line-height:1.12;max-width:250px}.nat-asset-symbol img{width:75%;margin-top:10px}.nat-asset-story img{width:95%;margin-top:0}.nat-asset-colors{grid-column:1/-1}.nat-color-swatches{grid-template-columns:repeat(3,1fr);gap:20px 13px}.nat-color-swatches small{font-size:10px}.nat-asset-rules{display:block}.nat-asset-rules ul{font-size:13px;padding-left:17px;margin-top:16px}.nat-asset-rules .asset-rule-note{font-size:11px}.nat-credit-split{grid-template-columns:1fr;gap:26px}.nat-credit-split p{font-size:13px}.nat-credit-split h3{font-size:14px}
+.customer-touchpoints{grid-template-columns:1fr;gap:43px}.touchpoint-image{padding:22px}.touchpoint-copy{margin-top:20px}.touchpoint-copy h3{font-size:26px}.touchpoint-copy p{font-size:14px}.touchpoint-copy>span{font-size:11px}.touchpoint-copy small{font-size:12px}.touchpoint-attribution{font-size:12px;line-height:1.8}
+.ai-system-section{padding-top:70px}.ai-system-cards{grid-template-columns:1fr}.ai-system-card{padding:28px 0 35px}.ai-system-card+.ai-system-card{padding:28px 0 35px;border-left:0;border-top:1px solid #bbb}.ai-system-card h3{font-size:29px}.ai-system-card .kicker{margin-bottom:20px}.system-subtitle{min-height:0}.system-flow{font-size:14px;margin-top:23px}.ai-system-card .text-link{font-size:14px}.case-body>.system-flow{margin-top:20px;margin-bottom:40px}.case-body>.system-flow>div{font-size:14px;grid-template-columns:36px 1fr}
+.standalone-brandbook{padding:90px 20px 20px}
+}
+@media(max-width:760px){.nat-asset-symbol,.nat-asset-signature,.nat-asset-story{grid-column:1/-1}.nat-asset-symbol img{max-width:150px}.nat-asset-signature img{margin-block:20px}.nat-asset-story img{max-width:250px}}
+
+.case-facts .facts-label-col{width:105px}
+@media(max-width:760px){.case-facts .facts-label-col{width:96px}}
+
+/* Textile originals are composed into two A4 pages on one A3 sheet. */
+.gallery-grid.textile-a3-gallery{grid-template-columns:minmax(0,1fr);gap:55px;max-width:1320px;margin-inline:auto}
+.textile-a3-gallery .image-button{background:#fff;border:1px solid #ddd}
+.textile-a3-gallery .asset{height:auto;display:block;width:100%}
+.textile-a3-gallery .asset-img{height:auto;width:100%;max-height:none;display:block;object-fit:contain}
+.textile-a3-gallery .image-caption{font-size:12px;line-height:1.8;color:#777}
+.textile-a3-overview .story-photo{max-width:650px;margin-inline:auto}
+@media(max-width:760px){.gallery-grid.textile-a3-gallery{gap:30px}.textile-a3-gallery .image-caption{font-size:11px}.textile-a3-overview .story-photo{width:100%}}
+
+/* COMONINOZ: connect each label original to its product application. */
+.cmnz-application-details{display:flex;align-items:center;justify-content:center;gap:clamp(24px,5vw,70px);margin:42px auto 0;padding:38px 0;border-top:1px solid #20202022;scroll-margin-top:165px}
+.cmnz-details-leather .primary-label{width:min(28vw,320px);flex:none}
+.cmnz-details-leather .folded-label{width:min(14vw,160px);flex:none}
+.cmnz-details-cotton .primary-label{width:min(55%,480px)}
+.cmnz-application-details .story-photo figcaption{font-size:13px;color:#696964}
+@media(max-width:760px){.cmnz-application-details{gap:24px;padding:28px 0;margin-top:30px}.cmnz-details-leather .primary-label{width:54%}.cmnz-details-leather .folded-label{width:27%}.cmnz-details-cotton .primary-label{width:82%}.cmnz-application-details .story-photo figcaption{font-size:12px;margin-top:10px}}
