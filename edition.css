@@ -770,3 +770,4 @@ html,body{overflow-x:clip}
 .hs-slide{scroll-snap-align:start;scroll-snap-stop:always}
 .hs-slide img{transform:none!important}
 .hero-slider{touch-action:auto}
+#ch-brand .wide .cc-im img{object-position:50% 45%!important}
