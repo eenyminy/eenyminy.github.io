@@ -18,3 +18,5 @@
 /* Two-line brand statement, sized to retain a clear mobile measure. */
 .feed-intro-line h1 .headline-continuation{display:block;font-size:.8em;line-height:1.3;margin-top:.12em}
 @media(max-width:760px){.feed-intro-line h1{max-width:none}.feed-intro-line h1 .headline-continuation{font-size:clamp(17px,5.25vw,22px)}}
+.casting-mosaic.balanced .cast-directory strong{font-size:clamp(20px,2.4vw,34px);letter-spacing:-.03em}
+@media (max-width:640px){.casting-mosaic.balanced .cast-directory strong{font-size:15px;letter-spacing:-.01em}}

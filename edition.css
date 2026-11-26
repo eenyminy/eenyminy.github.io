@@ -310,3 +310,6 @@ body{font-size:16px}
 .as-feature-books img{width:100%;height:auto;box-shadow:0 10px 24px -14px rgba(0,0,0,.45)}
 .as-feature .identity-details img{aspect-ratio:4/3;object-fit:cover}
 .as-feature .identity-art{background:#fff}
+.cast-directory strong{font-size:clamp(20px,2.2vw,32px);letter-spacing:-.03em}
+@media (max-width:640px){.cast-directory strong{font-size:18px}.cast-directory span{font-size:11px}}
+@media (max-width:640px){.casting-mosaic .cast-directory strong,.casting-mosaic.expanded .cast-directory strong{font-size:15px;letter-spacing:-.01em}}
