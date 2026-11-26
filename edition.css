@@ -731,3 +731,40 @@ html,body{overflow-x:clip}
 #ch-brand .wide .cc-im img{object-position:58% 50%}
 .chap-data .cc-im img,.chap-archive .cc-im img{object-position:top left}
 }
+/* ===== v2: editorial chapter heads + product-style cards ===== */
+.chap-head{display:grid!important;grid-template-columns:1fr auto;align-items:end;gap:6px 24px;margin-bottom:clamp(26px,3vw,44px)}
+.chap-no{grid-column:1;font:12px 'IBM Plex Mono','IBM Mono',monospace!important;letter-spacing:.12em;color:#141f3c!important;line-height:1!important}
+.chap-no i{font-style:normal;opacity:.45}
+.chap-head h2,#ai .chapter-heading h2{grid-column:1;font:400 clamp(42px,6.2vw,96px)/.95 Archivo,sans-serif!important;letter-spacing:-.055em!important;color:#141f3c;margin:10px 0 0!important}
+.chap-head h2 em,#ai .chapter-heading h2 em{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;letter-spacing:-.03em}
+.chap-ko{grid-column:1;font:500 14px Pretendard,sans-serif;color:#6b6e75;margin-top:12px!important}
+.chap-more{grid-column:2;grid-row:1/span 3;align-self:end;margin:0!important}
+#ai .chapter-heading>div{display:block!important}
+#ai .chapter-heading h2{color:#fff}#ai .chap-no{color:#fff!important}#ai .chap-ko{color:#a9abb3}
+.chap-row,#ch-brand .chap-row,#ch-touch .chap-row,.chap-data .chap-row,.chap-archive .chap-row{display:grid;grid-template-columns:repeat(4,1fr)!important;gap:clamp(14px,1.6vw,26px);align-items:start}
+.chap-card{grid-column:auto!important;grid-row:auto!important}
+.chap-card .cc-im,#ch-brand .cc-im,#ch-brand .wide .cc-im,.chap-data .cc-im,.chap-archive .cc-im,.chap-card.big .cc-im{position:relative;aspect-ratio:4/5!important;height:auto!important;flex:none!important;border-radius:10px;overflow:hidden;background:#e7e5df}
+.cc-im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s ease,transform .9s cubic-bezier(.2,.7,.1,1)}
+.cc-b{opacity:0}
+.chap-data .cc-im img,.chap-archive .cc-im img{object-position:top left}
+.cc-n{position:absolute;z-index:2;top:12px;left:12px;font:normal 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#fff;padding:6px 10px;border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,.28),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.cc-stk{position:absolute;z-index:2;right:12px;bottom:12px;width:44%;aspect-ratio:1;background:#fff;border-radius:6px;padding:6px;box-shadow:0 10px 26px rgba(0,0,0,.28);transform:rotate(5deg);transition:transform .6s cubic-bezier(.2,.8,.2,1.2)}
+.cc-stk img{position:static!important;width:100%;height:100%;object-fit:contain!important;border-radius:3px}
+.cc-tx{display:flex!important;flex-direction:column;gap:5px;padding-top:14px!important}
+.cc-br{display:flex;justify-content:space-between;gap:10px;font:10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8a8c90}
+.cc-br em{font-style:normal}
+.cc-tx b{font:600 clamp(18px,1.5vw,22px)/1.15 Archivo,Pretendard,sans-serif!important;letter-spacing:-.03em!important;color:#141f3c}
+.cc-tg{font:13px/1.45 Pretendard,sans-serif;color:#6b6e75}
+@media (hover:hover){.chap-card:hover .cc-b{opacity:1}.chap-card:hover .cc-a{transform:scale(1.04)}.chap-card:hover .cc-stk{transform:rotate(-2deg) translateY(-8px) scale(1.06)}.chap-card:hover b{color:#2b3f8f}}
+.chap-card:active .cc-stk{transform:rotate(0) scale(1.08)}
+#ai .cc-tx b{color:#fff}
+/* labels: no white boxes */
+.lb-art img{mix-blend-mode:multiply;filter:none!important}
+@media (max-width:760px){
+.chap-head{grid-template-columns:1fr}.chap-more{grid-column:1;grid-row:auto;justify-self:start;margin-top:14px!important}
+.chap-head h2,#ai .chapter-heading h2{font-size:clamp(40px,12vw,56px)!important}
+.chap-row,#ch-brand .chap-row,#ch-touch .chap-row,.chap-data .chap-row,.chap-archive .chap-row{display:flex!important}
+.chap .chap-card,.chap-data .chap-card,.chap-archive .chap-card,#ch-brand .chap-card{flex:0 0 80%!important}
+.cc-stk{width:40%}
+}
+.cc-n{background:linear-gradient(135deg,rgba(20,31,60,.42),rgba(20,31,60,.22))!important;border-color:rgba(255,255,255,.4)!important}
