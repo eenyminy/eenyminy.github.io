@@ -470,3 +470,24 @@ border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255
 .gp-mail{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;color:#141f3c;text-decoration:none;border-radius:999px;padding:12px 18px;font:600 13px Pretendard,sans-serif}
 .gp-mail span{opacity:.6;font-weight:500}
 @media (max-width:520px){.gp-career div{grid-template-columns:1fr;gap:2px}}
+/* lighter menu, matches pill */
+.glass-menu{min-width:0;padding:6px;border-radius:22px;gap:0;
+background:linear-gradient(180deg,rgba(255,255,255,.30),rgba(255,255,255,.14));border:1px solid rgba(255,255,255,.5);box-shadow:inset 0 1px 1px rgba(255,255,255,.6),0 8px 24px rgba(0,0,0,.12)}
+.glass-menu a{font:600 13px/1 Pretendard,sans-serif;padding:11px 18px;border-radius:16px;text-shadow:0 1px 2px rgba(0,0,0,.25);white-space:nowrap}
+.glass-menu a:hover{background:rgba(255,255,255,.18)}
+body:not(.on-hero) .glass-menu,body.hero-light .glass-menu{background:linear-gradient(110deg,rgba(7,27,54,.72),rgba(43,37,67,.62));border-color:rgba(255,255,255,.22);text-shadow:none}
+.designer-photo{display:block;width:120px;height:154px;object-fit:cover;border-radius:18px;margin:0 0 24px}
+@media (max-width:760px){.glass-menu a{font-size:13px;padding:10px 16px}.designer-photo{width:96px;height:123px}}
+.designer-contact{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.dc-btn{display:inline-flex;align-items:center;gap:12px;padding:13px 20px;border-radius:999px;background:#141f3c;color:#fff;text-decoration:none;font:600 14px Pretendard,sans-serif}
+.dc-btn span{font:500 10px Archivo,sans-serif;letter-spacing:.14em;opacity:.6}
+.field-cards{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;border:0!important}
+.field-cards a{display:flex!important;flex-direction:column;border:0!important;padding:0!important;background:#fff;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 1px 0 rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s}
+.field-cards a:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
+.fc-img{display:block;aspect-ratio:4/5;overflow:hidden;background:#eeece7}
+.fc-img img{width:100%;height:100%;object-fit:cover}
+.fc-body{display:flex;flex-direction:column;gap:4px;padding:14px 14px 16px}
+.fc-body strong{font:700 16px Pretendard,sans-serif}
+.fc-body>span{font:12px/1.5 Pretendard,sans-serif;color:#777}
+.fc-body small{font:600 12px Pretendard,sans-serif;color:#2b3f8f;margin-top:6px}
+@media (max-width:900px){.field-cards{grid-template-columns:1fr 1fr;gap:12px}.fc-body strong{font-size:15px}}
