@@ -248,10 +248,11 @@
   }
   function hotelCase(p){
     let html=magazineHeader(p,'Ordinary Holiday<br>× Von Dutch','theme-hotel','Hotel lookbook · 2025 SS');
-    html+=caseNav([['hotel','Hotel lookbook'],['collection','Collection']]);
+    html+=caseNav([['hotel','Hotel lookbook'],['diary','Hotel diary'],['collection','Collection']]);
     html+=`<section class="case-section hotel-opening" id="case-hotel"><img class="hotel-signature" src="img/ed/oh-script.png" alt="Ordinary Holiday 원본 레터링">${still(8,'','hotel-small')}${still(71,'','hotel-large')}<span class="hotel-season">2025 SS</span></section>`;
     html+=`<section class="case-section hotel-lace-spread">${still(3,'','hotel-campaign')}<div class="hotel-lace">${asset('ed/oh-lace.png','Von Dutch 원본 레이스 그래픽')}<p>Ordinary Holiday<br>× Von Dutch</p></div></section>`;
     html+=`<section class="case-section">${storySpread([4,'oh/vd_lb_halter.jpg'],[],'pair')}${storySpread([6],[],'quiet')}${storySpread([54,'oh/vd_lb_pants.jpg'],[],'offset')}</section>`;
+    html+=`<section class="case-section" id="case-diary">${storyHeading('Hotel diary.','2025 SS · 룩북')}${storySpread(['oh/vd25_tube.jpg','oh/vd25_tank.jpg'],['협업 로고 튜브탑 세트','워시드 프린트 탱크 · 레터링 스커트'],'pair')}${storySpread(['oh/vd25_cap_trio.jpg'],['협업 로고 트러커 캡'],'wide')}${storySpread(['oh/vd25_crack_tee.jpg','oh/vd25_lace.jpg'],['크랙 프린트 베이비 티','레이스 트림 베이비 티'],'offset')}${storySpread(['oh/vd25_pants_trio.jpg'],['백포켓 Von Dutch 자수 팬츠'],'wide')}${storySpread(['oh/vd25_beige_pants.jpg'],['백포켓 자수 카고 팬츠 · 베이지'],'quiet')}${storySpread(['oh/vd25_bed_trio.jpg'],['스톤 워싱 그래픽 티'],'wide')}</section>`;
     html+=`<section class="case-section story-collection" id="case-collection">${storyHeading('The collection.','2025 SS')}`;
     for(const [i,s] of p.secs.slice(1).entries()){
       html+=`<section class="story-product-chapter">${storyHeading(esc(s.t.split(' — ')[0]).toLowerCase(),s.sub)}${storySequence(s.items.map(x=>x[0]),[],'fashion')}</section>`;
