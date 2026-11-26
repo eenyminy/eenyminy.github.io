@@ -771,3 +771,14 @@ html,body{overflow-x:clip}
 .hs-slide img{transform:none!important}
 .hero-slider{touch-action:auto}
 #ch-brand .wide .cc-im img{object-position:50% 45%!important}
+#ch-brand .chap-row{grid-template-columns:1.2fr 1fr 1fr!important}
+#ch-brand .chap-card .cc-im{aspect-ratio:4/5!important}
+.nat-sub .cc-im{background:linear-gradient(180deg,#ece9de,#e6d9a6)}
+.nat-sub .cc-im img{object-fit:contain!important;padding:14%}
+.nat-sub[href$="graphics"] .cc-im{background:#5f5f5f}
+.chap-beyond .chap-row{grid-template-columns:1.2fr 2fr}
+.chap-beyond .cc-im{aspect-ratio:16/10}
+.chap-beyond .cc-im img{object-position:50% 45%}
+@media (max-width:760px){.chap-beyond .cc-im{aspect-ratio:4/5!important}}
+.chap .chap-card.nat-sub .cc-im{background:linear-gradient(180deg,#ece9de 0%,#ece180 55%,#d9b9a8 100%)!important}
+.chap .chap-card.nat-sub[href$="graphics"] .cc-im{background:#5f5f5f!important}
